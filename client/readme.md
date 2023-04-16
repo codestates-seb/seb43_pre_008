@@ -101,7 +101,6 @@ const onLogIn = () => {
   1. 전역에서 쓰일 수 있는 css는 App.css에서 관리
   1. 해당 컴포넌트나 페이지에서만 사용되는건 `styled-components`사용해서 관리
 
-```
 
 ### 2️⃣ branch
 > 브랜치는 항상 `PR`을 통해 병합하고, 각 팀의 2인의 인원이 허용해야합니다.<br />
@@ -111,7 +110,6 @@ const onLogIn = () => {
 + `frontend`/`backend`: 개발 브랜치
 + `feat/기능명` `|` `feat/페이지명`: 상세 개발 브랜치
 
-```
 
 ### 3️⃣ commit 컨벤션
 > commit 컨벤션은 최대한 사용 시점 예시에 맞춰서 사용 부탁드립니다.<br />
