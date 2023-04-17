@@ -25,6 +25,7 @@
   + `components`: 컴포넌트들
   + `hooks`: 사용자 정의 훅들
   + `share`: 전체 레이아웃 ( `Header`, `Footer`, `Nav`, `SideBar` )
+  + `style`: GlobalStyle, theme 등 전역 스타일드 컴포넌트
   + `pages`: 페이지 컴포넌트들
   + `app`: `store` 세팅을 위한 폴더
   + `features`:`redux-toolkit`을 정의를 위한 폴더
@@ -39,15 +40,16 @@
 │      ├─components
 │      ├─hooks
 │      └─share
-│          ├─Footer
-│          ├─Header       
-│          ├─SideBar
-│          └─Nav
+│      │   ├─Footer
+│      │   ├─Header       
+│      │   ├─SideBar
+│      │   └─Nav
 │      ├─pages
 │      └─app
-│          └─store
+│      ├─style  
 │      ├─features
-│      └─counter
+│          └─Counter
+│           
 ```
 
 ## 🕹️ 실행 & 빌드
