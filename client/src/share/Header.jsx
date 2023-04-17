@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
+/** 2023/04/16 - 헤더 전체 영역 컴포넌트 - by 박수범 */
 const Headerbar = styled.header`
   min-width: auto;
   box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.05),
@@ -14,6 +15,7 @@ const Headerbar = styled.header`
   position: relative;
   align-items: center;
 `;
+/** 2023/04/16 - 헤더 컨텐츠 컨테이너 컴포넌트 - by 박수범 */
 const TopbarContainer = styled.div`
   width: 115.2307692rem;
   max-width: 100%;
@@ -22,6 +24,7 @@ const TopbarContainer = styled.div`
   margin: 0 auto;
   align-items: center;
 `;
+/** 2023/04/16 - 헤더 로고 컴포넌트 - by 박수범 */
 const TopbarLogoImg = styled.img`
   width: 165px;
   height: 35px;
@@ -29,6 +32,7 @@ const TopbarLogoImg = styled.img`
   padding: 0px 8px;
   cursor: pointer;
 `;
+/** 2023/04/16 - 헤더 프로필사진 컴포넌트 - by 박수범 */
 const TopbarProfileImg = styled.img`
   margin-left: 15px;
   width: 24px;
@@ -36,11 +40,13 @@ const TopbarProfileImg = styled.img`
   display: block;
   cursor: pointer;
 `;
+/** 2023/04/16 - 헤더 SVG 아이콘 컴포넌트 - by 박수범 */
 const TopbarSVG = styled.svg`
   width: 18px;
   height: 18px;
   cursor: pointer;
 `;
+/** 2023/04/16 - 헤더 검색창 기준 좌측 버튼 컴포넌트 - by 박수범 */
 const TopbarLeftBtn = styled.button`
   position: relative;
   cursor: pointer;
@@ -57,6 +63,7 @@ const TopbarLeftBtn = styled.button`
     background-color: #ede8e8;
   }
 `;
+/** 2023/04/16 - 헤더 검색창 기준 우측 버튼 컴포넌트 - by 박수범 */
 const TopbarRightBtn = styled.button`
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
@@ -74,7 +81,7 @@ const TopbarRightBtn = styled.button`
     background-color: ${(props) => props.hover};
   }
 `;
-
+/** 2023/04/16 - 헤더 인풋폼 컴포넌트 - by 박수범 */
 const TopbarInputForm = styled.form`
   width: 100%;
   max-width: 776.734px;
@@ -82,7 +89,7 @@ const TopbarInputForm = styled.form`
   position: relative;
   border: none;
 `;
-
+/** 2023/04/16 - 헤더 검색창 컴포넌트 - by 박수범 */
 const TopbarInput = styled.input`
   width: ${(props) => props.width};
   padding: 7.8px 9.1px 7.8px 32px;
@@ -94,6 +101,7 @@ const TopbarInput = styled.input`
     box-shadow: rgb(107, 187, 247) 0px 0px 8px 1px;
   }
 `;
+/** 2023/04/16 - 헤더 검색창 아이콘 컴포넌트 - by 박수범 */
 const TopbarInputSearch = styled.div`
   cursor: pointer;
   position: absolute;
@@ -101,6 +109,7 @@ const TopbarInputSearch = styled.div`
   left: 15px;
   opacity: 0.5;
 `;
+/** 2023/04/16 - 헤더 검색힌트 컴포넌트 - by 박수범 */
 const TopbarInputSearchHint = styled.div`
   display: flex;
   box-sizing: border-box;
@@ -120,7 +129,7 @@ const TopbarInputSearchHint = styled.div`
     flex-basis: 50%;
   }
 `;
-
+/** 2023/04/16 - 헤더 검색 힌트리스트 컴포넌트 - by 박수범 */
 const HintContainer = styled.div`
   width: 100%;
   display: flex;
@@ -129,13 +138,13 @@ const HintContainer = styled.div`
   align-items: center;
   margin: 12px 12px;
 `;
-
+/** 2023/04/16 - 헤더 검색 힌트리스트 태그 컴포넌트 - by 박수범 */
 const HintlistHead = styled.span`
   font-size: 14px;
   font-weight: bold;
   color: hsl(210, 8%, 5%);
 `;
-
+/** 2023/04/16 - 헤더 검색 힌트리스트 내용 컴포넌트 - by 박수범 */
 const Hintlist = styled.span`
   font-size: 14px;
   color: hsl(210, 8%, 45%);

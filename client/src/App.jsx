@@ -1,12 +1,17 @@
 //import { Counter } from "./features/counter/Counter";
-import Header from "./share/Header";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Main from "./pages/Main";
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Main />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
