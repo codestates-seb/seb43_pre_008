@@ -1,10 +1,9 @@
-import Header from "../share/Header";
-import Sidebar from "../share/Sidebar";
+import Layout from "../share/Layout";
+
 export default function Main() {
   return (
     <div>
-      <Header />
-      <Sidebar />
+      <Layout />
       메인 페이지입니다.
     </div>
   );

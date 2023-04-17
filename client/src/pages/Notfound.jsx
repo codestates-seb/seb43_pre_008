@@ -1,10 +1,8 @@
-import Header from "../share/Header";
-import Sidebar from "../share/Sidebar";
+import Layout from "../share/Layout";
 export default function Notfound() {
   return (
     <div>
-      <Header />
-      <Sidebar />
+      <Layout />
       검색결과 없음 페이지입니다.
     </div>
   );
