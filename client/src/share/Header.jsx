@@ -207,6 +207,7 @@ export default function Header() {
             width="100%"
             placeholder="Search..."
             onClick={searchHintHandler}
+            onBlur={searchHintHandler}
           />
           {hintModal ? (
             <TopbarInputSearchHint>
