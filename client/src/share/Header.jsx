@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 /** 2023/04/16 - 헤더 전체 영역 컴포넌트 - by 박수범 */
@@ -56,7 +57,7 @@ const TopbarLeftBtn = styled.button`
   display: flex;
   -webkit-box-align: center;
   align-items: center;
-  border-radius: 1000px;
+  border-radius: 100px;
   background-color: rgba(0, 0, 0, 0);
   &:hover {
     color: #1f1e1e;
@@ -65,20 +66,15 @@ const TopbarLeftBtn = styled.button`
 `;
 /** 2023/04/16 - 헤더 검색창 기준 우측 버튼 컴포넌트 - by 박수범 */
 const TopbarRightBtn = styled.button`
-  background-color: ${(props) => props.backgroundColor};
-  color: ${(props) => props.color};
   border: 1px solid rgb(204, 204, 204);
   padding: 0px 10.4px;
   border-radius: 3px;
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  margin-left: ${(props) => props.margin};
+  margin-left: ${(margin) => margin};
   cursor: pointer;
   font-size: 13px;
   box-shadow: rgba(255, 255, 255, 0.4) 0px 1px 0px 0px;
   &:hover {
-    color: ${(props) => props.color};
-    background-color: ${(props) => props.hover};
+    background-color: ${({ hover }) => hover};
   }
 `;
 /** 2023/04/16 - 헤더 인풋폼 컴포넌트 - by 박수범 */
@@ -91,7 +87,7 @@ const TopbarInputForm = styled.form`
 `;
 /** 2023/04/16 - 헤더 검색창 컴포넌트 - by 박수범 */
 const TopbarInput = styled.input`
-  width: ${(props) => props.width};
+  width: ${({ width }) => width};
   padding: 7.8px 9.1px 7.8px 32px;
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(186, 191, 196);
@@ -154,28 +150,33 @@ export default function Header() {
   const [isSigngin, setIsSignin] = useState(false);
   const [isSigngup, setIsSignup] = useState(false);
   const [hintModal, setHintModalp] = useState(false);
+  const navigate = useNavigate();
 
   /** 2023/04/16 - 로고클릭 시 홈으로 리다이렉트 시켜주는 함수 - by 박수범 */
   const logoClickEvent = () => {
     console.log("홈으로 이동합니당.");
+    navigate("/");
   };
 
   /** 2023/04/16 - signin 버튼 클릭 시 signin 페이지로 이동시켜주는 함수 - by 박수범 */
   const signinBtnHandler = () => {
     console.log(".signin 페이지로 이동합니다.");
     setIsSignin(!isSigngin);
+    navigate("/signin");
   };
 
   /** 2023/04/16 - signup 버튼 클릭 시 signup 페이지로 이동시켜주는 함수 - by 박수범 */
   const signupBtnHandler = () => {
     console.log(".signup 페이지로 이동합니다.");
     setIsSignup(!isSigngup);
+    navigate("/signup");
   };
 
   /** 2023/04/16 - logout 버튼 클릭 시 main(question) 페이지로 이동시켜주는 함수 - by 박수범 */
   const logoutBtnHandler = () => {
-    console.log(".signup 페이지로 이동합니다.");
+    console.log("main 페이지로 이동합니다.");
     setIsSignin(!isSigngin);
+    navigate("/");
   };
 
   /** 2023/04/16 - input창 클릭 시 search hint 모달창 띄워주는 함수 - by 박수범 */
@@ -262,7 +263,7 @@ export default function Header() {
         {!isSigngin ? (
           <TopbarRightBtn
             hover="rgb(189, 196, 201)"
-            margin="10px"
+            margin="5px"
             backgroundColor="rgb(225, 236, 244)"
             color="rgb(57, 115, 157)"
             width="57px"
@@ -278,7 +279,7 @@ export default function Header() {
         {!isSigngin ? (
           <TopbarRightBtn
             hover="rgb(8, 127, 218)"
-            margin="10px"
+            margin="5px"
             backgroundColor="rgb(10, 149, 255)"
             color="rgb(255, 255, 255)"
             width="66px"
@@ -290,7 +291,7 @@ export default function Header() {
         ) : (
           <TopbarRightBtn
             hover="rgb(248, 53, 62)"
-            margin="10px"
+            margin="5px"
             backgroundColor="rgb(248, 82, 90)"
             color="rgb(255, 255, 255)"
             width="66px"
