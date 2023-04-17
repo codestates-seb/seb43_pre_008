@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
-import { ReactComponent as QuestionIcon } from "../assets/icons/questionIcon.svg";
-import { ReactComponent as InfoIcon } from "../assets/icons/infoIcon.svg";
-import { ReactComponent as CollectiveIcon } from "../assets/icons/collectiveIcon.svg";
-import { ReactComponent as Team1 } from "../assets/icons/team1.svg";
-import { ReactComponent as Team2 } from "../assets/icons/team2.svg";
+import { ReactComponent as QuestionIcon } from "../img/questionIcon.svg";
+import { ReactComponent as InfoIcon } from "../img/infoIcon.svg";
+import { ReactComponent as CollectiveIcon } from "../img/collectiveIcon.svg";
+import { ReactComponent as Team1 } from "../img/team1.svg";
+import { ReactComponent as Team2 } from "../img/team2.svg";
 import { useDispatch, useSelector } from "react-redux";
 import styled, { css } from "styled-components";
 export const NavbarWrapper = styled.nav`
   height: 100%;
   border-right: 1px solid #d7d9dd;
 `;
-
+/**2023-04-18 이진하 */
 export const MobileNavbar = styled.div`
   position: fixed;
   top: 53px;
