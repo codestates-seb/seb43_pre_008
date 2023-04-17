@@ -1,8 +1,8 @@
-import Header from "../share/Header";
+import Layout from "../share/Layout";
 export default function Mypage() {
   return (
     <div>
-      <Header />
+      <Layout />
       마이페이지 입니다.
     </div>
   );

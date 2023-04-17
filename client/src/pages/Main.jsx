@@ -1,8 +1,9 @@
-import Header from "../share/Header";
+import Layout from "../share/Layout";
+
 export default function Main() {
   return (
     <div>
-      <Header />
+      <Layout />
       메인 페이지입니다.
     </div>
   );
