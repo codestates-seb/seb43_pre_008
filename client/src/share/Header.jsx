@@ -13,7 +13,7 @@ const Headerbar = styled.header`
   height: 50px;
   display: flex;
   border-top: 3px solid rgb(244, 130, 37);
-  position: fixed;
+  position: relative;
   align-items: center;
 `;
 /** 2023/04/16 - 헤더 컨텐츠 컨테이너 컴포넌트 - by 박수범 */
