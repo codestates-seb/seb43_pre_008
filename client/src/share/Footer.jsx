@@ -2,7 +2,6 @@ import { ReactComponent as LogoIcon } from "../img/mobileLogo.svg";
 import styled from "styled-components";
 /**2023-04-18 이진하 */
 export const FooterWrapper = styled.footer`
-  position: fixed;
   bottom: 0;
   display: flex;
   justify-content: center;
