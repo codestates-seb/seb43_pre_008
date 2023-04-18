@@ -3,8 +3,10 @@ import Sidebar from "../share/Sidebar";
 import Footer from "../share/Footer";
 import styled from "styled-components";
 import Nav from "../share/Nav";
+import axios from "axios";
+import Questionlist from "../components/main/Questionlist";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-//import { useState } from "react";
 
 /** 2023/04/18 - 전체 영역 컴포넌트 - by 박수범 */
 const LayoutArea = styled.div`
@@ -21,7 +23,7 @@ const LayoutContainer = styled.div`
 `;
 /** 2023/04/18 - 사이드바 레이아웃 컴포넌트 - by 박수범 */
 const SidebarContainer = styled.div`
-  margin-top: 24px;
+  margin-top: 74px;
   width: 30%;
   min-height: 100%;
 `;
@@ -35,7 +37,7 @@ const ContentsContainer = styled.div`
   width: 80%;
   max-width: 726px;
   min-height: 100%;
-  padding: 24px 16px;
+  padding: 74px 16px;
 `;
 /** 2023/04/18 - 컨텐츠 헤더 컴포넌트 - by 박수범 */
 const ContentsHeader = styled.header`
@@ -107,16 +109,25 @@ const BtnContainer = styled.p`
 `;
 
 export default function Main() {
-  //const [questionCount, setQuestionCount] = useState(1);
   const navigate = useNavigate();
+  const [questionList, setQuestionList] = useState(1);
 
+  useEffect(() => {
+    axios.get("localhost:3000/question?page=1&size=10").then((res) => {
+      console.log(res);
+      setQuestionList(1);
+    });
+  }, []);
+
+  /** 2023/04/18 - Ask 버튼 클릭 시 질문작성페이지로 이동하는 함수 - by 박수범 */
   const AskBtnHandler = () => {
     navigate("/ask");
   };
+
   return (
     <div>
-      <Header />
       <LayoutArea>
+        <Header />
         <LayoutContainer>
           <NavContainer>
             <Nav />
@@ -130,13 +141,16 @@ export default function Main() {
                 </ContentsHeaderAsk>
               </ContentsHeaderTop>
               <ContentsHeaderBottom>
-                <HeaderCount>{0} questions</HeaderCount>
+                <HeaderCount>{questionList} questions</HeaderCount>
                 <BtnContainer>
                   <HeaderTapBtn redious="4px 0px 0px 4px">Newest</HeaderTapBtn>
                   <HeaderTapBtn redious="0px">Oldest</HeaderTapBtn>
                   <HeaderTapBtn redious="0px 4px 4px 0px">View</HeaderTapBtn>
                 </BtnContainer>
               </ContentsHeaderBottom>
+              <Questionlist />
+              <Questionlist />
+              <Questionlist />
             </ContentsHeader>
           </ContentsContainer>
           <SidebarContainer>
