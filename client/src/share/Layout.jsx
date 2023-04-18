@@ -37,10 +37,6 @@ const ContentsContainer = styled.div`
   border: solid 1px red;
 `;
 
-/*const SidebarContainer = styled.div`
-  width: 300px;
-`;*/
-
 export default function Layout() {
   return (
     <div>
