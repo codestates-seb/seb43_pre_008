@@ -1,0 +1,148 @@
+{
+  "MEMBER": [
+    {
+      "MEMBER_SEQ": 1,
+      "NAME": "John Doe",
+      "NICKNAME": "JD",
+      "EMAIL": "johndoe@example.com",
+      "EMAIL_CHECK_YN": "Y",
+      "REPUTATION": 100,
+      "OAUTH_PROVIDER": "Google",
+      "OAUTH_ID": "google123",
+      "ACCESS_TOKEN": "abcdefg12345",
+      "REFRESH_TOKEN": "xyz987",
+      "PASSWORD": "password123",
+      "SIGNUP_DTM": "2022-01-01 00:00:00",
+      "MDFY_ID": "admin",
+      "REG_ID": "admin",
+      "REG_DTM": "2022-01-01 00:00:00"
+    },
+    {
+      "MEMBER_SEQ": 2,
+      "NAME": "Jane Smith",
+      "NICKNAME": "JS",
+      "EMAIL": "janesmith@example.com",
+      "EMAIL_CHECK_YN": "N",
+      "REPUTATION": 50,
+      "OAUTH_PROVIDER": "Facebook",
+      "OAUTH_ID": "facebook123",
+      "ACCESS_TOKEN": "hijklmn67890",
+      "REFRESH_TOKEN": "uvw123",
+      "PASSWORD": "password456",
+      "SIGNUP_DTM": "2022-02-01 00:00:00",
+      "MDFY_ID": "admin",
+      "REG_ID": "admin",
+      "REG_DTM": "2022-02-01 00:00:00"
+    },
+    {
+      "MEMBER_SEQ": 3,
+      "NAME": "Bob Johnson",
+      "NICKNAME": "BJ",
+      "EMAIL": "bob.johnson@example.com",
+      "EMAIL_CHECK_YN": "Y",
+      "REPUTATION": 75,
+      "OAUTH_PROVIDER": "Twitter",
+      "OAUTH_ID": "twitter123",
+      "ACCESS_TOKEN": "pqrstuv45678",
+      "REFRESH_TOKEN": "wxy987",
+      "PASSWORD": "password789",
+      "SIGNUP_DTM": "2022-03-01 00:00:00",
+      "MDFY_ID": "admin",
+      "REG_ID": "admin",
+      "REG_DTM": "2022-03-01 00:00:00"
+    },
+    {
+      "MEMBER_SEQ": 4,
+      "NAME": "Alice Lee",
+      "NICKNAME": "AL",
+      "EMAIL": "alice.lee@example.com",
+      "EMAIL_CHECK_YN": "N",
+      "REPUTATION": 25,
+      "OAUTH_PROVIDER": "Google",
+      "OAUTH_ID": "google456",
+      "ACCESS_TOKEN": "ijklmn12345",
+      "REFRESH_TOKEN": "xyz456",
+      "PASSWORD": "passwordabc",
+      "SIGNUP_DTM": "2022-04-01 00:00:00",
+      "MDFY_ID": "admin",
+      "REG_ID": "admin",
+      "REG_DTM": "2022-04-01 00:00:00"
+    },
+    {
+      "MEMBER_SEQ": 5,
+      "NAME": "David Kim",
+      "NICKNAME": "DK",
+      "EMAIL": "david.kim@example.com",
+      "EMAIL_CHECK_YN": "Y",
+      "REPUTATION": 50,
+      "OAUTH_PROVIDER": "Facebook",
+      "OAUTH_ID": "facebook456"
+    }],
+  "FORUM": [
+    {
+      "FORUM_SEQ": 1,
+      "MEMBER_SEQ": 1,
+      "TITLE": "첫 번째 글",
+      "CONTENT": "첫 번째 글의 내용입니다.",
+      "VIEW_CNT": 10,
+      "MAX_REPLY_CNT": 3,
+      "WRITE_DTM": "2021-01-01 00:00:00",
+      "MDFY_ID": null,
+      "MDFY_DTM": null,
+      "REG_ID": "admin",
+      "REG_DTM": "2021-01-01 00:00:00"
+    },
+    {
+      "FORUM_SEQ": 2,
+      "MEMBER_SEQ": 2,
+      "TITLE": "두 번째 글",
+      "CONTENT": "두 번째 글의 내용입니다.",
+      "VIEW_CNT": 20,
+      "MAX_REPLY_CNT": 5,
+      "WRITE_DTM": "2021-01-02 00:00:00",
+      "MDFY_ID": null,
+      "MDFY_DTM": null,
+      "REG_ID": "admin",
+      "REG_DTM": "2021-01-02 00:00:00"
+    }
+  ],
+  "REPLY": [
+    {
+      "REPLY_SEQ": 1,
+      "FORUM_SEQ": 1,
+      "MEMBER_SEQ": 3,
+      "CONTENT": "첫 번째 글에 대한 첫 번째 댓글입니다.",
+      "SELECTED_YN": "N",
+      "WRITE_DTM": "2021-01-02 00:00:00",
+      "MDFY_ID": null,
+      "MDFY_DTM": null,
+      "REG_ID": "admin",
+      "REG_DTM": "2021-01-02 00:00:00"
+    },
+    {
+      "REPLY_SEQ": 2,
+      "FORUM_SEQ": 1,
+      "MEMBER_SEQ": 4,
+      "CONTENT": "첫 번째 글에 대한 두 번째 댓글입니다.",
+      "SELECTED_YN": "N",
+      "WRITE_DTM": "2021-01-03 00:00:00",
+      "MDFY_ID": null,
+      "MDFY_DTM": null,
+      "REG_ID": "admin",
+      "REG_DTM": "2021-01-03 00:00:00"
+    }
+  ],
+  "COMMENT": [
+    {
+      "COMMENT_SEQ": 1,
+      "REPLY_SEQ": 1,
+      "MEMBER_SEQ": 5,
+      "CONTENT": "첫 번째 댓글에 대한 댓글입니다.",
+      "WRITE_DTM": "2021-01-03 00:00:00",
+      "MDFY_ID": null,
+      "MDFY_DTM": null,
+      "REG_ID": "admin",
+      "REG_DTM": "2021-01-03 00:00:00"
+    }
+  ]
+}
