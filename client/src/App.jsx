@@ -8,8 +8,6 @@ import Notfound from "./pages/Notfound";
 import Question from "./pages/Question";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
-import Nav from "./share/Nav";
-import Footer from "./share/Footer";
 function App() {
   return (
     <BrowserRouter>
@@ -24,9 +22,7 @@ function App() {
             <Route path="/signin" element={<Signin />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
-          <Nav />
         </div>
-        <Footer />
       </div>
     </BrowserRouter>
   );
