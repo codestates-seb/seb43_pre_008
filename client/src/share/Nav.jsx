@@ -6,6 +6,7 @@ import { ReactComponent as Team1 } from "../img/team1.svg";
 import { ReactComponent as Team2 } from "../img/team2.svg";
 import { useDispatch, useSelector } from "react-redux";
 import styled, { css } from "styled-components";
+
 export const NavbarWrapper = styled.nav`
   height: 100%;
   border-right: 1px solid #d7d9dd;
