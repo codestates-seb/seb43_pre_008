@@ -2,7 +2,7 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./App.css";
 import Main from "./pages/Main";
-import Mypage from "./pages/Mypage";
+import Mypage from "./pages/Mypages/Mypage";
 import Ask from "./pages/Ask";
 import Notfound from "./pages/Notfound";
 import Question from "./pages/Question";
