@@ -3,10 +3,11 @@ import Sidebar from "../share/Sidebar";
 import Footer from "../share/Footer";
 import styled from "styled-components";
 import Nav from "../share/Nav";
-import axios from "axios";
-import Questionlist from "../components/main/Questionlist";
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import PageContainer from "../components/main/PageContainer";
+import Questionmap from "../components/main/Questionmap";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 /** 2023/04/18 - 전체 영역 컴포넌트 - by 박수범 */
 const LayoutArea = styled.div`
@@ -110,15 +111,13 @@ const BtnContainer = styled.p`
 
 export default function Main() {
   const navigate = useNavigate();
-  const [questionList, setQuestionList] = useState(1);
-
+  const [questionData, setQuestionData] = useState([]);
   useEffect(() => {
-    axios.get("localhost:3000/question?page=1&size=10").then((res) => {
-      console.log(res);
-      setQuestionList(1);
+    axios.get("http://localhost:4000/discussions").then((res) => {
+      console.log(res.data);
+      setQuestionData(res.data);
     });
   }, []);
-
   /** 2023/04/18 - Ask 버튼 클릭 시 질문작성페이지로 이동하는 함수 - by 박수범 */
   const AskBtnHandler = () => {
     navigate("/ask");
@@ -141,23 +140,23 @@ export default function Main() {
                 </ContentsHeaderAsk>
               </ContentsHeaderTop>
               <ContentsHeaderBottom>
-                <HeaderCount>{questionList} questions</HeaderCount>
+                <HeaderCount>{1} questions</HeaderCount>
                 <BtnContainer>
                   <HeaderTapBtn redious="4px 0px 0px 4px">Newest</HeaderTapBtn>
                   <HeaderTapBtn redious="0px">Oldest</HeaderTapBtn>
                   <HeaderTapBtn redious="0px 4px 4px 0px">View</HeaderTapBtn>
                 </BtnContainer>
               </ContentsHeaderBottom>
-              <Questionlist />
-              <Questionlist />
-              <Questionlist />
             </ContentsHeader>
+            <Questionmap questionData={questionData} />
+            <PageContainer />
           </ContentsContainer>
           <SidebarContainer>
             <Sidebar />
           </SidebarContainer>
         </LayoutContainer>
       </LayoutArea>
+
       <Footer />
     </div>
   );

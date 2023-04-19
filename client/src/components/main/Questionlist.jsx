@@ -18,6 +18,9 @@ const LeftContainer = styled.div`
     padding-bottom: 10px;
   }
 `;
+const Answerview = styled.p`
+  color: #807d7d;
+`;
 /** 2023-04-18 - 컨테이너 우측 컴포넌트 - by 박수범 */
 const RightContainer = styled.div`
   width: 100%;
@@ -44,6 +47,7 @@ const QuestionContents = styled.div`
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   > a {
+    text-align: left;
     font-size: 17px;
     white-space: normal;
     text-decoration: none;
@@ -67,6 +71,8 @@ const QuestionContents = styled.div`
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     > p {
+      color: black;
+      text-align: left;
       white-space: normal;
       font-size: 13px;
       margin-bottom: 8px;
@@ -112,53 +118,43 @@ const MemberandcteateAt = styled.div`
     color: rgb(0, 116, 204);
   }
   > span {
+    color: rgb(82, 89, 96);
+    margin-left: 3px;
     margin: 0px 2px;
   }
 `;
 
-export default function Questionlist() {
+export default function Questionlist({ el }) {
   return (
     <QuestionContainer>
       <LeftContainer>
-        <p>1 votes</p>
-        <p>0 answers</p>
-        <p>64 views</p>
+        <p>{el.vote} votes</p>
+        <Answerview>{el.answer} asnwers</Answerview>
+        <Answerview>{el.views} views</Answerview>
       </LeftContainer>
       <RightContainer>
         <QuestionContents>
-          <a href="/">
-            서연님화이팅~! 서연님화이팅~! 서연님화이팅~! 서연님화이팅~!
-            서연님화이팅~! 서연님화이팅~! 서연님화이팅~! 서연님화이팅~!
-          </a>
+          <a href="/">{el.title}</a>
         </QuestionContents>
         <QuestionContents>
           <div>
-            <p>
-              서연님화이팅~!서연님화이팅~!서연님화이팅~!서연님화이팅~!
-              서연님화이팅~! 서연님화이팅~! 서연님화이팅~! 서연님화이팅~!
-              서연님화이팅~!
-            </p>
+            <p>{el.content}</p>
             <QuestionContents>
               <TagContainer>
                 <ul>
                   <li>
-                    <span>react</span>
+                    <span>{el.tag[0]}</span>
                   </li>
                   <li>
-                    <span>redux</span>
+                    <span>{el.tag[1]}</span>
                   </li>
                 </ul>
               </TagContainer>
             </QuestionContents>
             <MemberandcteateAt>
-              <a href="/">Bumpist</a>
+              <a href="/">{el.username}</a>
               <span></span>
-              <a href="/">
-                createAt
-                <span color="rgb(82, 89, 96) margin-left: 3px;">
-                  2023-04-05-11:59
-                </span>
-              </a>
+              <span>{el.createAt}</span>
             </MemberandcteateAt>
           </div>
         </QuestionContents>
