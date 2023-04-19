@@ -1,14 +1,13 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-
 import Header from "../../share/Header";
 import Nav from "../../share/Nav";
 import Footer from "../../share/Footer";
 import MyPage_header from "../../components/mypage/MyPage_header";
 import MyPage_menu from "../../components/mypage/MyPage_menu";
 import Mypage_setNav from "../../components/mypage/Mypage_setNav";
-
+/** 2024/4/19 전체영역(메인 Nav + 컨텐츠) 컴포넌트 -by 고정윤 */
 const MainDiv = styled.div`
   display: flex;
   justify-content: space-between;
@@ -17,27 +16,27 @@ const MainDiv = styled.div`
   margin: 0 auto;
   white-space: normal;
 `;
-
+/** 2024/4/19 컨테이너 컴포넌트 -by 고정윤 */
 const Container = styled.div`
   width: 100%;
 `;
-
+/** 2024/4/19 컨텐츠 묶음 컴포넌트(header, menu, Maincontainer) -by 고정윤 */
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   padding: 24px;
 `;
-
+/** 2024/4/19 좌측 setting Nav + 우측 컨텐츠 묶음 컴포넌트 -by 고정윤 */
 const MainContainer = styled.div`
   display: flex;
 `;
-
+/** 2024/4/19 우측 컨텐츠 묶음 컴포넌트 -by 고정윤 */
 const Main = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 `;
-
+/** 2024/4/19 타이틀 컴포넌트 -by 고정윤 */
 const Title = styled.div`
   display: flex;
   justify-content: space-between;
@@ -45,12 +44,14 @@ const Title = styled.div`
   padding-bottom: 16px;
   border-bottom: 1px solid #d6d9dc;
 `;
+/** 2024/4/19 h1 컴포넌트 -by 고정윤 */
 const H1 = styled.h1`
   font-weight: 500;
   margin: 0px;
   font-size: 2.5em;
   line-height: calc(15 / 13);
 `;
+/** 2024/4/19 p 컴포넌트 -by 고정윤 */
 const P = styled.p`
   margin-bottom: 1.2em;
   white-space: normal;
@@ -59,7 +60,7 @@ const P = styled.p`
   line-height: 1.5em;
   clear: both;
 `;
-
+/** 2024/4/19 ul 컴포넌트 -by 고정윤 */
 const UL = styled.ul`
   margin-bottom: 1.2em;
   margin-left: 3em;
@@ -72,15 +73,17 @@ const UL = styled.ul`
     margin-bottom: 10px;
   }
 `;
+/** 2024/4/19 form 컴포넌트 -by 고정윤 */
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 `;
+/** 2024/4/19 fieldset 컴포넌트 -by 고정윤 */
 const Fieldset = styled.fieldset`
   margin-bottom: 24px;
 `;
-
+/** 2024/4/19 ckeck박스 컴포넌트 -by 고정윤 */
 const CheckDiv = styled.div`
   > label {
     display: flex;
@@ -94,6 +97,7 @@ const CheckDiv = styled.div`
     }
   }
 `;
+/** 2024/4/19 삭제버튼 컴포넌트 -by 고정윤 */
 const DeleteBtn = styled.button`
   border: 1px solid transparent;
   border-radius: 3px;
@@ -113,6 +117,7 @@ const DeleteBtn = styled.button`
     text-decoration: none;
   }
 `;
+/** 2024/4/19 마이페이지 Delete Profile -by 고정윤 */
 const MypageDelete = () => {
   const [boxChecked, setBoxChecked] = useState(false);
 
