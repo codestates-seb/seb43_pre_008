@@ -1,4 +1,6 @@
+import LoginButton from "../components/sign/LoginButtons";
 import styled from "styled-components";
+import LoginInputForm from "../components/sign/LoginInputForm";
 import logo_stack from "../img/logo_stack.svg";
 import copyButton from "../img/copyButton.svg";
 import { Link } from "react-router-dom";
@@ -18,6 +20,12 @@ const LoginWrapper = styled.div`
   align-items: center;
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 16px;
+`;
 const Logowrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -28,7 +36,15 @@ const Logowrapper = styled.div`
     height: 37px;
   }
 `;
-
+const FormWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 24px;
+  padding: 24px;
+  border-radius: 7px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 10px 24px 0px,
+    rgba(0, 0, 0, 0.05) 0px 20px 48px 0px, rgba(0, 0, 0, 0.1) 0px 1px 4px 0px;
+`;
 const RedirectionDiv1 = styled.div`
   padding: 16px;
   margin-bottom: 24px;
@@ -66,12 +82,24 @@ const RedirectionDiv2 = styled.div`
 `;
 
 const Signin = () => {
+  const handleButtonClick = () => {
+    console.log("action");
+  };
+
   return (
     <Page>
       <LoginWrapper>
         <Logowrapper>
           <img src={logo_stack} alt="logo_stack" />
         </Logowrapper>
+        <ButtonWrapper>
+          <LoginButton onClick={handleButtonClick} type={"google"} />
+          <LoginButton onClick={handleButtonClick} type={"github"} />
+          <LoginButton onClick={handleButtonClick} type={"facebook"} />
+        </ButtonWrapper>
+        <FormWrapper>
+          <LoginInputForm />
+        </FormWrapper>
         <RedirectionDiv1>
           Don't have an account?{" "}
           <RedirectionLink to="../users/signup">Sign up</RedirectionLink>
