@@ -3,15 +3,16 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
+/** 2024/4/19 마이페이지 상단 메뉴 전체영역 -by 고정윤 */
 const Container = styled.div`
   margin: 0px;
 `;
-
+/** 2024/4/19 마이페이지 상단 메뉴 컨텐츠 -by 고정윤 */
 const Content = styled.div`
   display: flex;
   margin-bottom: 16px;
 `;
-
+/** 2024/4/19 마이페이지 상단 메뉴 ul -by 고정윤 */
 const MyPageMenuUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -23,7 +24,6 @@ const MyPageMenuUl = styled.ul`
   list-style: none;
   a {
     text-decoration: none;
-
     border-radius: 1000px;
     padding: 6px 12px 6px 12px;
     display: flex;
@@ -42,7 +42,7 @@ const MyPageMenuUl = styled.ul`
     }
   }
 `;
-
+/** 2024/4/19 마이페이지 상단 메뉴 li -by 고정윤 */
 const MyPageMenuLi = styled.li`
   display: flex;
   align-items: center;
@@ -57,7 +57,7 @@ const MyPageMenuLi = styled.li`
     background-color: #e3e6e8;
   }
 `;
-
+/** 2024/4/19 마이페이지 메뉴 -by 고정윤 */
 const MyPage_menu = () => {
   let location = useLocation().pathname;
   location = location.slice(8);
@@ -68,7 +68,7 @@ const MyPage_menu = () => {
         <Content>
           <MyPageMenuUl>
             <Link to="/mypage/profile">
-              {location === "profile" ? (
+              {location === "profile" || location === "" ? (
                 <MyPageMenuLi className="active">Profile</MyPageMenuLi>
               ) : (
                 <MyPageMenuLi>Profile</MyPageMenuLi>

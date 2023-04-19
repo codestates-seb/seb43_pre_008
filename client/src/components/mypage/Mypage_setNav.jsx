@@ -1,14 +1,14 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-
+/** 2024/4/19 마이페이지(setting) 좌측 nav 묶음 -by 고정윤*/
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 32px;
   min-width: 190px;
 `;
-
+/** 2024/4/19 마이페이지(setting) 좌측 nav ul -by 고정윤*/
 const MyPageMenuUl = styled.ul`
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ const MyPageMenuUl = styled.ul`
     }
   }
 `;
-
+/** 2024/4/19 마이페이지(setting) 좌측 nav li -by 고정윤*/
 const MyPageMenuLi = styled.li`
   color: hsl(210, 8%, 35%);
   line-height: 1.5em;
@@ -61,8 +61,8 @@ const MyPageMenuLi = styled.li`
     }
   }
 `;
-
-const Mypage_activeNav = () => {
+/** 2024/4/19 마이페이지(setting) 좌측 nav ul 묶음 -by 고정윤*/
+const Mypage_setNav = () => {
   let location = useLocation().pathname;
   location = location.slice(8);
   return (
@@ -120,4 +120,4 @@ const Mypage_activeNav = () => {
   );
 };
 
-export default Mypage_activeNav;
+export default Mypage_setNav;

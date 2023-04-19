@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 import Header from "../../share/Header";
 import Nav from "../../share/Nav";
 import Footer from "../../share/Footer";
@@ -10,6 +9,7 @@ import Mypage_setNav from "../../components/mypage/Mypage_setNav";
 import ThemaLight from "../../img/theme-light.svg";
 import ThemaSystem from "../../img/theme-system@2x.png";
 import ThemaDark from "../../img/theme-dark.svg";
+/** 2024/4/19 전체영역(메인 Nav + 컨텐츠) 컴포넌트 -by 고정윤 */
 const MainDiv = styled.div`
   display: flex;
   justify-content: space-between;
@@ -18,21 +18,21 @@ const MainDiv = styled.div`
   margin: 0 auto;
   white-space: normal;
 `;
-
+/** 2024/4/19 컨테이너 컴포넌트 -by 고정윤 */
 const Container = styled.div`
   width: 100%;
 `;
-
+/** 2024/4/19 컨텐츠 묶음 컴포넌트(header, menu, Maincontainer) -by 고정윤 */
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   padding: 24px;
 `;
-
+/** 2024/4/19 좌측 setting Nav + 우측 컨텐츠 묶음 컴포넌트 -by 고정윤 */
 const MainContainer = styled.div`
   display: flex;
 `;
-
+/** 2024/4/19 우측 컨텐츠 묶음 컴포넌트 -by 고정윤 */
 const Main = styled.div`
   display: flex;
   flex-direction: column;
@@ -40,7 +40,7 @@ const Main = styled.div`
   width: 100%;
   text-align: left;
 `;
-
+/** 2024/4/19 타이틀 컴포넌트 -by 고정윤 */
 const Title = styled.div`
   display: flex;
   justify-content: space-between;
@@ -48,13 +48,14 @@ const Title = styled.div`
   padding-bottom: 16px;
   border-bottom: 1px solid #d6d9dc;
 `;
+/** 2024/4/19 h1 컴포넌트 -by 고정윤 */
 const H1 = styled.h1`
   font-weight: 500;
   margin: 0px;
   font-size: 2.5em;
   line-height: calc(15 / 13);
 `;
-
+/** 2024/4/19 h3 컴포넌트 -by 고정윤 */
 const H3 = styled.h3`
   font-weight: 400;
   font-size: 2em;
@@ -66,15 +67,15 @@ const H3 = styled.h3`
     color: hsl(210, 8%, 45%);
   }
 `;
-
+/** 2024/4/19 서브타이틀 컴포넌트 -by 고정윤 */
 const SubTitle = styled.div``;
-
+/** 2024/4/19 세팅 리스트별 묶음 컴포넌트 -by 고정윤 */
 const SetList = styled.div`
   margin-bottom: 48px;
   border: 1px solid #e3e6e8;
   border-radius: 5px;
 `;
-
+/** 2024/4/19 세팅 리스트 컴포넌트 -by 고정윤 */
 const SetListCompo = styled.div`
   padding: 24px;
   border-bottom: 1px solid #e3e6e8;
@@ -87,7 +88,7 @@ const SetListCompo = styled.div`
     justify-content: space-between;
   }
 `;
-
+/** 2024/4/19 본문내용 타이틀+내용 묶음 컴포넌트 -by 고정윤 */
 const SetBodyCompo = styled.div`
   display: flex;
   flex-direction: column;
@@ -115,11 +116,13 @@ const SetBodyCompo = styled.div`
     padding: 7.8px 9.1px 7.8px 9.1px;
   }
 `;
+/** 2024/4/19 리스트 타이틀 컴포넌트 -by 고정윤 */
 const ListCompoTitle = styled.div`
   font-weight: bold;
   margin-bottom: 10px;
   font-size: 1.4em;
 `;
+/** 2024/4/19 내용 외 이미지, 버튼, 토글 감싸는 컴포넌트 -by 고정윤 */
 const SetItemCompo = styled.div`
   display: flex;
 
@@ -164,7 +167,7 @@ const SetItemCompo = styled.div`
     margin: 8px;
   }
 `;
-
+/** 2024/4/19 다운로드 버튼컴포넌트 -by 고정윤 */
 const DownloadBtn = styled.button`
   padding: 10.4px;
   background-color: transparent;
