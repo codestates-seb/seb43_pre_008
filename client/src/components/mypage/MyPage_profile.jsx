@@ -250,8 +250,7 @@ const PostContainer = styled.div`
     }
   }
 `;
-
-export default function Mypage_profile() {
+const Mypage_profile = () => {
   const [isAbout] = useState(false);
   const [isPost] = useState(false);
 
@@ -381,4 +380,5 @@ export default function Mypage_profile() {
       </Container>
     </React.Fragment>
   );
-}
+};
+export default Mypage_profile;
