@@ -1,6 +1,8 @@
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import Footer from "./Footer";
 import styled from "styled-components";
+import Nav from "./Nav";
 
 /** 2023/04/18 - 전체 영역 컴포넌트 - by 박수범 */
 const LayoutArea = styled.div`
@@ -45,13 +47,16 @@ export default function Layout() {
       <Header />
       <LayoutArea>
         <LayoutContainer>
-          <NavContainer></NavContainer>
+          <NavContainer>
+            <Nav />
+          </NavContainer>
           <ContentsContainer></ContentsContainer>
           <SidebarContainer>
             <Sidebar />
           </SidebarContainer>
         </LayoutContainer>
       </LayoutArea>
+      <Footer />
     </div>
   );
 }

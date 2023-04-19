@@ -3,15 +3,16 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
+/** 2024/4/19 마이페이지 상단 메뉴 전체영역 -by 고정윤 */
 const Container = styled.div`
   margin: 0px;
 `;
-
+/** 2024/4/19 마이페이지 상단 메뉴 컨텐츠 -by 고정윤 */
 const Content = styled.div`
   display: flex;
   margin-bottom: 16px;
 `;
-
+/** 2024/4/19 마이페이지 상단 메뉴 ul -by 고정윤 */
 const MyPageMenuUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -21,37 +22,42 @@ const MyPageMenuUl = styled.ul`
   padding: 2px 0px 2px 0px;
   margin: 0px;
   list-style: none;
-
-  > a {
+  a {
     text-decoration: none;
-    color: black;
-
-    > .selected {
-      background-color: #f48225;
-      color: white;
-      font-weight: 600;
-      &:hover {
-        background-color: #af6122;
-      }
+    border-radius: 1000px;
+    padding: 6px 12px 6px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .active {
+    background-color: #f48225;
+    border-radius: 1000px;
+    height: 29px;
+    padding: 6px 12px 6px 12px;
+    color: white;
+    font-weight: 600;
+    &:hover {
+      background-color: #af6122;
     }
   }
 `;
-
+/** 2024/4/19 마이페이지 상단 메뉴 li -by 고정윤 */
 const MyPageMenuLi = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
   border-radius: 1000px;
-  padding: 6px 12px 6px 12px;
   height: 29px;
+  padding: 6px 12px 6px 12px;
   font-size: 1.2em;
-
+  color: hsl(210, 8%, 35%);
   &:hover {
     background-color: #e3e6e8;
   }
 `;
-
+/** 2024/4/19 마이페이지 메뉴 -by 고정윤 */
 const MyPage_menu = () => {
   let location = useLocation().pathname;
   location = location.slice(8);
@@ -62,25 +68,19 @@ const MyPage_menu = () => {
         <Content>
           <MyPageMenuUl>
             <Link to="/mypage/profile">
-              {location === "profile" ? (
-                <MyPageMenuLi className="selected">Profile</MyPageMenuLi>
+              {location === "profile" || location === "" ? (
+                <MyPageMenuLi className="active">Profile</MyPageMenuLi>
               ) : (
                 <MyPageMenuLi>Profile</MyPageMenuLi>
               )}
             </Link>
-            <Link to="/mypage/activity">
-              {location === "activity" ? (
-                <MyPageMenuLi className="selected">Activity</MyPageMenuLi>
-              ) : (
-                <MyPageMenuLi className="selected">Activity</MyPageMenuLi>
-              )}
-            </Link>
+            <MyPageMenuLi>Activity</MyPageMenuLi>
             <MyPageMenuLi>Saves</MyPageMenuLi>
             <Link to="/mypage/setting">
               {location === "setting" ||
               location === "useredit" ||
               location === "userdelete" ? (
-                <MyPageMenuLi className="selected">Settings</MyPageMenuLi>
+                <MyPageMenuLi className="active">Settings</MyPageMenuLi>
               ) : (
                 <MyPageMenuLi>Settings</MyPageMenuLi>
               )}
