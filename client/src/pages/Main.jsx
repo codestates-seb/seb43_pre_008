@@ -24,7 +24,7 @@ const LayoutContainer = styled.div`
 `;
 /** 2023/04/18 - 사이드바 레이아웃 컴포넌트 - by 박수범 */
 const SidebarContainer = styled.div`
-  margin-top: 74px;
+  margin-top: 24px;
   width: 30%;
   min-height: 100%;
 `;
@@ -38,7 +38,7 @@ const ContentsContainer = styled.div`
   width: 80%;
   max-width: 726px;
   min-height: 100%;
-  padding: 74px 16px;
+  padding: 24px 16px;
 `;
 /** 2023/04/18 - 컨텐츠 헤더 컴포넌트 - by 박수범 */
 const ContentsHeader = styled.header`
