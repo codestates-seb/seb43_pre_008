@@ -11,4 +11,9 @@
 
 .App {
   text-align: center;
+  padding-top: 53px;
+}
+
+h1 {
+  font-size: 27px
 }
