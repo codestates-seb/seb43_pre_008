@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  font-family: -apple-system, "system-ui", "Segoe UI Adjusted", "Segoe UI", "Liberations Sans", sans-serif;
+  font-weight: 400;
+  white-space: nowrap;
+  font-size: 11px;
+}
+
+.App {
+  text-align: center;
+}
