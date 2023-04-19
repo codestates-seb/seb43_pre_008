@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -21,21 +21,10 @@ const MyPageMenuUl = styled.ul`
   padding: 2px 0px 2px 0px;
   margin: 0px;
   list-style: none;
-`;
-
-const MyPageMenuLi = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 1000px;
-  height: 29px;
-
   a {
     text-decoration: none;
-    color: hsl(210, 8%, 35%);
+
     border-radius: 1000px;
-    font-size: 1.2em;
     padding: 6px 12px 6px 12px;
     display: flex;
     justify-content: center;
@@ -52,65 +41,50 @@ const MyPageMenuLi = styled.li`
       background-color: #af6122;
     }
   }
+`;
+
+const MyPageMenuLi = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 1000px;
+  height: 29px;
+  padding: 6px 12px 6px 12px;
+  font-size: 1.2em;
+  color: hsl(210, 8%, 35%);
   &:hover {
     background-color: #e3e6e8;
   }
 `;
 
 const MyPage_menu = () => {
-  const [activeMenu, setActiveMenu] = useState("Profile");
+  let location = useLocation().pathname;
+  location = location.slice(8);
 
-  const handleClick = (menuName) => {
-    setActiveMenu(menuName);
-  };
   return (
     <React.Fragment>
       <Container>
         <Content>
           <MyPageMenuUl>
-            <MyPageMenuLi>
-              <Link
-                to="/mypage/profile"
-                className={activeMenu === "Profile" ? "active" : ""}
-                onClick={() => handleClick("")}
-              >
-                Profile
-              </Link>
-            </MyPageMenuLi>
-
-            <MyPageMenuLi>
-              <Link
-                to="/mypage/activity"
-                className={activeMenu === "Activity" ? "active" : ""}
-                onClick={() => handleClick("")}
-              >
-                Activity
-              </Link>
-            </MyPageMenuLi>
-            <MyPageMenuLi>
-              <Link
-                to="/mypage/save"
-                className={activeMenu === "Saves" ? "active" : ""}
-                onClick={() => handleClick("")}
-              >
-                Saves
-              </Link>
-            </MyPageMenuLi>
-            <MyPageMenuLi>
-              <Link
-                to="/mypage/setting"
-                className={
-                  activeMenu === "Activity" ||
-                  activeMenu === "useredit" ||
-                  activeMenu === "userdelete"
-                    ? "active"
-                    : ""
-                }
-                onClick={() => handleClick("")}
-              >
-                Settings
-              </Link>
-            </MyPageMenuLi>
+            <Link to="/mypage/profile">
+              {location === "profile" ? (
+                <MyPageMenuLi className="active">Profile</MyPageMenuLi>
+              ) : (
+                <MyPageMenuLi>Profile</MyPageMenuLi>
+              )}
+            </Link>
+            <MyPageMenuLi>Activity</MyPageMenuLi>
+            <MyPageMenuLi>Saves</MyPageMenuLi>
+            <Link to="/mypage/setting">
+              {location === "setting" ||
+              location === "useredit" ||
+              location === "userdelete" ? (
+                <MyPageMenuLi className="active">Settings</MyPageMenuLi>
+              ) : (
+                <MyPageMenuLi>Settings</MyPageMenuLi>
+              )}
+            </Link>
           </MyPageMenuUl>
         </Content>
       </Container>
