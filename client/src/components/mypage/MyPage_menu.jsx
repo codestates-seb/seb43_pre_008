@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -21,20 +21,6 @@ const MyPageMenuUl = styled.ul`
   padding: 2px 0px 2px 0px;
   margin: 0px;
   list-style: none;
-
-  > a {
-    text-decoration: none;
-    color: black;
-
-    > .selected {
-      background-color: #f48225;
-      color: white;
-      font-weight: 600;
-      &:hover {
-        background-color: #af6122;
-      }
-    }
-  }
 `;
 
 const MyPageMenuLi = styled.li`
@@ -43,48 +29,88 @@ const MyPageMenuLi = styled.li`
   justify-content: center;
   border: none;
   border-radius: 1000px;
-  padding: 6px 12px 6px 12px;
   height: 29px;
-  font-size: 1.2em;
 
+  a {
+    text-decoration: none;
+    color: hsl(210, 8%, 35%);
+    border-radius: 1000px;
+    font-size: 1.2em;
+    padding: 6px 12px 6px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .active {
+    background-color: #f48225;
+    border-radius: 1000px;
+    height: 29px;
+    padding: 6px 12px 6px 12px;
+    color: white;
+    font-weight: 600;
+    &:hover {
+      background-color: #af6122;
+    }
+  }
   &:hover {
     background-color: #e3e6e8;
   }
 `;
 
 const MyPage_menu = () => {
-  let location = useLocation().pathname;
-  location = location.slice(8);
+  const [activeMenu, setActiveMenu] = useState("Profile");
 
+  const handleClick = (menuName) => {
+    setActiveMenu(menuName);
+  };
   return (
     <React.Fragment>
       <Container>
         <Content>
           <MyPageMenuUl>
-            <Link to="/mypage/profile">
-              {location === "profile" ? (
-                <MyPageMenuLi className="selected">Profile</MyPageMenuLi>
-              ) : (
-                <MyPageMenuLi>Profile</MyPageMenuLi>
-              )}
-            </Link>
-            <Link to="/mypage/activity">
-              {location === "activity" ? (
-                <MyPageMenuLi className="selected">Activity</MyPageMenuLi>
-              ) : (
-                <MyPageMenuLi className="selected">Activity</MyPageMenuLi>
-              )}
-            </Link>
-            <MyPageMenuLi>Saves</MyPageMenuLi>
-            <Link to="/mypage/setting">
-              {location === "setting" ||
-              location === "useredit" ||
-              location === "userdelete" ? (
-                <MyPageMenuLi className="selected">Settings</MyPageMenuLi>
-              ) : (
-                <MyPageMenuLi>Settings</MyPageMenuLi>
-              )}
-            </Link>
+            <MyPageMenuLi>
+              <Link
+                to="/mypage/profile"
+                className={activeMenu === "Profile" ? "active" : ""}
+                onClick={() => handleClick("")}
+              >
+                Profile
+              </Link>
+            </MyPageMenuLi>
+
+            <MyPageMenuLi>
+              <Link
+                to="/mypage/activity"
+                className={activeMenu === "Activity" ? "active" : ""}
+                onClick={() => handleClick("")}
+              >
+                Activity
+              </Link>
+            </MyPageMenuLi>
+            <MyPageMenuLi>
+              <Link
+                to="/mypage/save"
+                className={activeMenu === "Saves" ? "active" : ""}
+                onClick={() => handleClick("")}
+              >
+                Saves
+              </Link>
+            </MyPageMenuLi>
+            <MyPageMenuLi>
+              <Link
+                to="/mypage/setting"
+                className={
+                  activeMenu === "Activity" ||
+                  activeMenu === "useredit" ||
+                  activeMenu === "userdelete"
+                    ? "active"
+                    : ""
+                }
+                onClick={() => handleClick("")}
+              >
+                Settings
+              </Link>
+            </MyPageMenuLi>
           </MyPageMenuUl>
         </Content>
       </Container>
