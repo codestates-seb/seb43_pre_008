@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 const DisplayNameInput = styled.input.attrs({
   type: "text",
 })`
-  display: inline-block;
+  border: 1px solid hsl(210, 8%, 85%);
+  display: block;
   padding: 7px 9px;
   width: 100%;
   text-align: start;
@@ -17,9 +18,15 @@ const DisplayNameInput = styled.input.attrs({
     "Liberation Sans", sans-serif;
   box-shadow: none;
   border-radius: 3px;
+
+  &:focus {
+    outline: none;
+    border-color: hsl(210, 50%, 50%);
+    box-shadow: 0 0 0 2px hsl(210, 50%, 50%);
+  }
 `;
 const DisplayNameLabel = styled.label`
-  display: inline-block;
+  display: block;
   padding: 0 2px;
   text-align: left;
   font-size: 15px;
@@ -33,7 +40,8 @@ const DisplayNameLabel = styled.label`
 const EmailInput = styled.input.attrs({
   type: "text",
 })`
-  display: inline-block;
+  border: 1px solid hsl(210, 8%, 85%);
+  display: block;
   padding: 7px 9px;
   width: 100%;
   text-align: start;
@@ -44,9 +52,15 @@ const EmailInput = styled.input.attrs({
     "Liberation Sans", sans-serif;
   box-shadow: none;
   border-radius: 3px;
+
+  &:focus {
+    outline: none;
+    border-color: hsl(210, 50%, 50%);
+    box-shadow: 0 0 0 2px hsl(210, 50%, 50%);
+  }
 `;
 const EmailLabel = styled.label`
-  display: inline-block;
+  display: block;
   padding: 0 2px;
   text-align: left;
   font-size: 15px;
@@ -59,7 +73,7 @@ const EmailLabel = styled.label`
 `;
 
 const PasswordLabel = styled.label`
-  display: inline-block;
+  display: block;
   padding: 0 2px;
   text-align: left;
   font-size: 15px;
@@ -73,7 +87,8 @@ const PasswordLabel = styled.label`
 const PasswordInput = styled.input.attrs({
   type: "password",
 })`
-  display: inline-block;
+  border: 1px solid hsl(210, 8%, 85%);
+  display: block;
   padding: 7px 9px;
   width: 100%;
   text-align: start;
@@ -85,6 +100,12 @@ const PasswordInput = styled.input.attrs({
   box-shadow: none;
   border-radius: 3px;
   margin-bottom: 10px;
+
+  &:focus {
+    outline: none;
+    border-color: hsl(210, 50%, 50%);
+    box-shadow: 0 0 0 2px hsl(210, 50%, 50%);
+  }
 `;
 
 const Sign = styled.form`

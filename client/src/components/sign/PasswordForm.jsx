@@ -28,11 +28,12 @@ const PasswordSearch = styled.button`
   font-size: 12px;
   color: #0074cc;
 `;
-
+/** 2023/04/19 - 패스워드 입력 - by 이진하 */
 const PasswordInput = styled.input.attrs({
   type: "password",
 })`
-  display: inline-block;
+  border: 1px solid hsl(210, 8%, 80%);
+  display: block;
   padding: 7px 9px;
   width: 100%;
   text-align: start;
@@ -44,6 +45,12 @@ const PasswordInput = styled.input.attrs({
   box-shadow: none;
   border-radius: 3px;
   margin-bottom: 5px;
+
+  &:focus {
+    outline: none;
+    border-color: hsl(210, 50%, 50%);
+    box-shadow: 0 0 0 2px hsl(210, 50%, 50%);
+  }
 `;
 
 const PasswordForm = ({ loginPassword, setLoginPassword }) => {

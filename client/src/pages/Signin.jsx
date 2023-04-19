@@ -4,7 +4,7 @@ import LoginInputForm from "../components/sign/LoginInputForm";
 import logo_stack from "../img/logo_stack.svg";
 import copyButton from "../img/copyButton.svg";
 import { Link } from "react-router-dom";
-
+import Header from "../share/Header";
 const Page = styled.div`
   width: 100vw;
   height: 100vh;
@@ -87,32 +87,35 @@ const Signin = () => {
   };
 
   return (
-    <Page>
-      <LoginWrapper>
-        <Logowrapper>
-          <img src={logo_stack} alt="logo_stack" />
-        </Logowrapper>
-        <ButtonWrapper>
-          <LoginButton onClick={handleButtonClick} type={"google"} />
-          <LoginButton onClick={handleButtonClick} type={"github"} />
-          <LoginButton onClick={handleButtonClick} type={"facebook"} />
-        </ButtonWrapper>
-        <FormWrapper>
-          <LoginInputForm />
-        </FormWrapper>
-        <RedirectionDiv1>
-          Don't have an account?{" "}
-          <RedirectionLink to="../users/signup">Sign up</RedirectionLink>
-          <RedirectionDiv2>
-            Are you an empolyer?{" "}
-            <a href="/">
-              Sign up on Talent
-              <img src={copyButton} alt="" />
-            </a>
-          </RedirectionDiv2>
-        </RedirectionDiv1>
-      </LoginWrapper>
-    </Page>
+    <div>
+      <Header />
+      <Page>
+        <LoginWrapper>
+          <Logowrapper>
+            <img src={logo_stack} alt="logo_stack" />
+          </Logowrapper>
+          <ButtonWrapper>
+            <LoginButton onClick={handleButtonClick} type={"google"} />
+            <LoginButton onClick={handleButtonClick} type={"github"} />
+            <LoginButton onClick={handleButtonClick} type={"facebook"} />
+          </ButtonWrapper>
+          <FormWrapper>
+            <LoginInputForm />
+          </FormWrapper>
+          <RedirectionDiv1>
+            Don't have an account?{" "}
+            <RedirectionLink to="../signup">Sign up</RedirectionLink>
+            <RedirectionDiv2>
+              Are you an empolyer?{" "}
+              <a href="/">
+                Sign up on Talent
+                <img src={copyButton} alt="" />
+              </a>
+            </RedirectionDiv2>
+          </RedirectionDiv1>
+        </LoginWrapper>
+      </Page>
+    </div>
   );
 };
 
