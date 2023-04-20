@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import axios from "axios";
 
+import Pagination from "react-js-pagination";
+
+/** 2023/04/20 - 페이지네이션 영역 컴포넌트 - by 박수범 */
 const PageContaine = styled.div`
   display: flex;
   -webkit-box-pack: justify;
@@ -59,43 +61,27 @@ const PageContaine = styled.div`
   }
 `;
 
-export default function PageContainer({ setQuestionData }) {
+export default function PageContainer({
+  page,
+  count,
+  setPage,
+  setPostPerPage,
+  postPerPage,
+}) {
   const pageBtn = (page) => {
-    axios
-      .get(`http://localhost:4000/discussions/pagesize=${page}`)
-      .then((res) => {
-        setQuestionData(res.data);
-      });
+    setPostPerPage(page);
   };
   return (
     <PageContaine>
-      <ul>
-        <li>
-          <a href="/" aria-label="Go to first page">
-            &lt;&lt;
-          </a>
-        </li>
-        <li>
-          <a href="/" aria-label="Go to previous page">
-            Prev
-          </a>
-        </li>
-        <li>
-          <a href="/" aria-label="Go to page 1">
-            1
-          </a>
-        </li>
-        <li>
-          <a href="/" aria-label="Go to page 1">
-            next
-          </a>
-        </li>
-        <li>
-          <a href="/" aria-label="Go to page 1">
-            &gt;&gt;
-          </a>
-        </li>
-      </ul>
+      <Pagination
+        activePage={page}
+        itemsCountPerPage={postPerPage}
+        totalItemsCount={count}
+        pageRangeDisplayed={postPerPage}
+        prevPageText={"<"}
+        nextPageText={">"}
+        onChange={setPage}
+      />
       <div>
         <button onClick={() => pageBtn(15)}>15</button>
         <button onClick={() => pageBtn(30)}>30</button>

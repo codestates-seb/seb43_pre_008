@@ -2,6 +2,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import SignupButton from "../components/sign/SignupButton";
+import Header from "../share/Header";
 import SignupForm from "../components/sign/SignupForm";
 import { Link } from "react-router-dom";
 import icon_question from "../img/icon_question.svg";
@@ -16,66 +17,69 @@ const Signup = () => {
   const [signupPassword, setSignupPassword] = useState();
 
   return (
-    <SignupPage>
-      <SignupContent>
-        <Desktop>
-          <DivReactiveWarpper>
-            <JointheStack>Join the Stack Overflow community</JointheStack>
-            <AskQuestion>
-              <img src={icon_question} alt="icon_question" />
-              Get unstuck — ask a question
-            </AskQuestion>
-            <UnlockPriviliges>
-              <img src={icon_topdown} alt="icon_topdown" />
-              Unlock new privileges like voting and commenting
-            </UnlockPriviliges>
-            <SaveTag>
-              <img src={icon_tag} alt="icon_tag" />
-              Save your favorite tags, filters, and jobs
-            </SaveTag>
-            <EarnBadge>
-              <img src={icon_trophy} alt="icon_trophy" />
-              Earn reputation and badges
-            </EarnBadge>
-          </DivReactiveWarpper>
-        </Desktop>
-        <SignupWrapper>
-          <Tablet>
-            <SignupTablet>
-              Create your Stack Overflow account. It’s free
-              <br /> and only takes a minute.
-            </SignupTablet>
-          </Tablet>
-          <Mobile>
-            <SignupMobile>
-              Create your Stack Overflow account. It’s
-              <br /> free and only takes a minute.
-            </SignupMobile>
-          </Mobile>
-          <SignupButtonBlock>
-            <SignupButton type={"google"} />
-            <SignupButton type={"github"} />
-            <SignupButton type={"facebook"} />
-          </SignupButtonBlock>
-          <Signdiv>
-            <SignupForm
-              displayName={displayName}
-              setDisplayName={setDisplayName}
-              signupEmail={signupEmail}
-              setSignupEmail={setSignupEmail}
-              signupPassword={signupPassword}
-              setSignupPassword={setSignupPassword}
-            />
-          </Signdiv>
-          <ContextLogin>
-            Already have an account?{" "}
-            <RedirectionLink to="/signin">Sign in</RedirectionLink>
-            <br />
-            Are you an employer? Sign up on Talent
-          </ContextLogin>
-        </SignupWrapper>
-      </SignupContent>
-    </SignupPage>
+    <>
+      <Header />
+      <SignupPage>
+        <SignupContent>
+          <Desktop>
+            <DivReactiveWarpper>
+              <JointheStack>Join the Stack Overflow community</JointheStack>
+              <AskQuestion>
+                <img src={icon_question} alt="icon_question" />
+                Get unstuck — ask a question
+              </AskQuestion>
+              <UnlockPriviliges>
+                <img src={icon_topdown} alt="icon_topdown" />
+                Unlock new privileges like voting and commenting
+              </UnlockPriviliges>
+              <SaveTag>
+                <img src={icon_tag} alt="icon_tag" />
+                Save your favorite tags, filters, and jobs
+              </SaveTag>
+              <EarnBadge>
+                <img src={icon_trophy} alt="icon_trophy" />
+                Earn reputation and badges
+              </EarnBadge>
+            </DivReactiveWarpper>
+          </Desktop>
+          <SignupWrapper>
+            <Tablet>
+              <SignupTablet>
+                Create your Stack Overflow account. It’s free
+                <br /> and only takes a minute.
+              </SignupTablet>
+            </Tablet>
+            <Mobile>
+              <SignupMobile>
+                Create your Stack Overflow account. It’s
+                <br /> free and only takes a minute.
+              </SignupMobile>
+            </Mobile>
+            <SignupButtonBlock>
+              <SignupButton type={"google"} />
+              <SignupButton type={"github"} />
+              <SignupButton type={"facebook"} />
+            </SignupButtonBlock>
+            <Signdiv>
+              <SignupForm
+                displayName={displayName}
+                setDisplayName={setDisplayName}
+                signupEmail={signupEmail}
+                setSignupEmail={setSignupEmail}
+                signupPassword={signupPassword}
+                setSignupPassword={setSignupPassword}
+              />
+            </Signdiv>
+            <ContextLogin>
+              Already have an account?{" "}
+              <RedirectionLink to="/signin">Sign in</RedirectionLink>
+              <br />
+              Are you an employer? Sign up on Talent
+            </ContextLogin>
+          </SignupWrapper>
+        </SignupContent>
+      </SignupPage>
+    </>
   );
 };
 
