@@ -69,7 +69,7 @@ const Signup = () => {
           </Signdiv>
           <ContextLogin>
             Already have an account?{" "}
-            <RedirectionLink to="/sign">Log in</RedirectionLink>
+            <RedirectionLink to="/signin">Sign in</RedirectionLink>
             <br />
             Are you an employer? Sign up on Talent
           </ContextLogin>
