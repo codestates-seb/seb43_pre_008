@@ -149,7 +149,7 @@ export default function Main() {
               </ContentsHeaderBottom>
             </ContentsHeader>
             <Questionmap questionData={questionData} />
-            <PageContainer />
+            <PageContainer setQuestionData={setQuestionData} />
           </ContentsContainer>
           <SidebarContainer>
             <Sidebar />

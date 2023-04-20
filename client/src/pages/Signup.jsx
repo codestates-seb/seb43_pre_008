@@ -9,7 +9,6 @@ import icon_tag from "../img/icon_question.svg";
 import icon_topdown from "../img/icon_topdown.svg";
 import icon_trophy from "../img/icon_trophy.svg";
 import { Desktop, Tablet, Mobile } from "../components/sign/Responsive";
-import Header from "../share/Header";
 
 const Signup = () => {
   const [displayName, setDisplayName] = useState("");
@@ -70,7 +69,7 @@ const Signup = () => {
           </Signdiv>
           <ContextLogin>
             Already have an account?{" "}
-            <RedirectionLink to="/login">Log in</RedirectionLink>
+            <RedirectionLink to="/sign">Log in</RedirectionLink>
             <br />
             Are you an employer? Sign up on Talent
           </ContextLogin>
