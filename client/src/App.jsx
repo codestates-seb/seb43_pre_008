@@ -4,8 +4,8 @@ import "./App.css";
 import Main from "./pages/Main";
 import Mypage from "./pages/Mypages/Mypage";
 import Ask from "./pages/Ask";
-import Notfound from "./pages/Notfound";
 import Question from "./pages/Question";
+import QuestionSearch from "./pages/QuestionSearch";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import MypageSetting from "./pages/Mypages/MypageSetting";
@@ -25,7 +25,7 @@ function App() {
             <Route path="/mypage/setting" element={<MypageSetting />} />
             <Route path="/mypage/userdelete" element={<MypageDelete />} />
             <Route path="/mypage/useredit" element={<MypageEdit />} />
-            <Route path="/notfound" element={<Notfound />} />
+            <Route path="/questionsearch" element={<QuestionSearch />} />
             <Route path="/question" element={<Question />} />
             <Route path="/signin" element={<Signin />} />
             <Route path="/signup" element={<Signup />} />
