@@ -111,13 +111,17 @@ const BtnContainer = styled.p`
 
 export default function Main() {
   const navigate = useNavigate();
+  /** 2023/04/20 - 질문리스트를 관리하는 state - by 박수범 */
   const [questionData, setQuestionData] = useState([]);
+
+  /** 2023/04/20 - 렌더링 시 질문리스트들을 받아오는 함수 - by 박수범 */
   useEffect(() => {
     axios.get("http://localhost:4000/discussions").then((res) => {
       console.log(res.data);
       setQuestionData(res.data);
     });
   }, []);
+
   /** 2023/04/18 - Ask 버튼 클릭 시 질문작성페이지로 이동하는 함수 - by 박수범 */
   const AskBtnHandler = () => {
     navigate("/ask");
@@ -140,7 +144,7 @@ export default function Main() {
                 </ContentsHeaderAsk>
               </ContentsHeaderTop>
               <ContentsHeaderBottom>
-                <HeaderCount>{1} questions</HeaderCount>
+                <HeaderCount>{questionData.length} questions</HeaderCount>
                 <BtnContainer>
                   <HeaderTapBtn redious="4px 0px 0px 4px">Newest</HeaderTapBtn>
                   <HeaderTapBtn redious="0px">Oldest</HeaderTapBtn>
@@ -156,7 +160,6 @@ export default function Main() {
           </SidebarContainer>
         </LayoutContainer>
       </LayoutArea>
-
       <Footer />
     </div>
   );
