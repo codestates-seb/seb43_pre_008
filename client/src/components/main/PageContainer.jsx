@@ -49,13 +49,12 @@ const PageContaine = styled.div`
       border-radius: 3px;
       margin: 0px 3px;
       padding: 0px 8px;
-
       &:hover {
-        background-color: rgb(214, 217, 220);
+        background-color: rgb(223, 225, 227);
       }
       > a {
+        color: #545353;
         text-decoration: none;
-        color: rgb(0, 116, 204);
       }
     }
   }
@@ -68,7 +67,8 @@ export default function PageContainer({
   setPostPerPage,
   postPerPage,
 }) {
-  const pageBtn = (page) => {
+  const pageBtn = (e, page) => {
+    e.preventDefault();
     setPostPerPage(page);
   };
   return (
@@ -83,9 +83,9 @@ export default function PageContainer({
         onChange={setPage}
       />
       <div>
-        <button onClick={() => pageBtn(15)}>15</button>
-        <button onClick={() => pageBtn(30)}>30</button>
-        <button onClick={() => pageBtn(50)}>50</button>
+        <button onClick={(e) => pageBtn(e, 15)}>15</button>
+        <button onClick={(e) => pageBtn(e, 30)}>30</button>
+        <button onClick={(e) => pageBtn(e, 50)}>50</button>
         <p>per page</p>
       </div>
     </PageContaine>
