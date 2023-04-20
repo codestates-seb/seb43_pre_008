@@ -144,7 +144,7 @@ export default function Main() {
                 </ContentsHeaderAsk>
               </ContentsHeaderTop>
               <ContentsHeaderBottom>
-                <HeaderCount>{1} questions</HeaderCount>
+                <HeaderCount>{questionData.length} questions</HeaderCount>
                 <BtnContainer>
                   <HeaderTapBtn redious="4px 0px 0px 4px">Newest</HeaderTapBtn>
                   <HeaderTapBtn redious="0px">Oldest</HeaderTapBtn>
