@@ -13,7 +13,8 @@ const Headerbar = styled.header`
   height: 50px;
   display: flex;
   border-top: 3px solid rgb(244, 130, 37);
-  position: relative;
+  position: fixed;
+  top: 0;
   align-items: center;
 `;
 /** 2023/04/16 - 헤더 컨텐츠 컨테이너 컴포넌트 - by 박수범 */
@@ -172,6 +173,12 @@ export default function Header() {
     navigate("/signup");
   };
 
+  /** 2023/04/18 - 프로필이미지 클릭 시 mypage 페이지로 이동시켜주는 함수 - by 박수범 */
+  const profileBtnHandler = () => {
+    console.log(".signup 페이지로 이동합니다.");
+    navigate("/mypage");
+  };
+
   /** 2023/04/16 - logout 버튼 클릭 시 main(question) 페이지로 이동시켜주는 함수 - by 박수범 */
   const logoutBtnHandler = () => {
     console.log("main 페이지로 이동합니다.");
@@ -274,7 +281,10 @@ export default function Header() {
             Log in
           </TopbarRightBtn>
         ) : (
-          <TopbarProfileImg src="https://www.gravatar.com/avatar/b1bf695e61fd622161b5dbd20b037d10?s=48&d=identicon&r=PG&f=y&so-version=2" />
+          <TopbarProfileImg
+            src="https://www.gravatar.com/avatar/b1bf695e61fd622161b5dbd20b037d10?s=48&d=identicon&r=PG&f=y&so-version=2"
+            onClick={profileBtnHandler}
+          />
         )}
 
         {!isSigngin ? (

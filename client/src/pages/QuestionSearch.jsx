@@ -1,13 +1,15 @@
-import Header from "../share/Header";
-import Sidebar from "../share/Sidebar";
-import Footer from "../share/Footer";
-import styled from "styled-components";
-import Nav from "../share/Nav";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import Header from "../share/Header";
+import Footer from "../share/Footer";
+import Sidebar from "../share/Sidebar";
+import Nav from "../share/Nav";
+import NoResult from "../components/search/NoResult";
 import PageContainer from "../components/main/PageContainer";
 import Questionmap from "../components/main/Questionmap";
+import Loading from "../components/Loading";
 import axios from "axios";
-import { useState, useEffect } from "react";
 
 /** 2023/04/18 - 전체 영역 컴포넌트 - by 박수범 */
 const LayoutArea = styled.div`
@@ -109,15 +111,22 @@ const BtnContainer = styled.p`
   align-items: center;
 `;
 
-export default function Main() {
+export default function QuestionSearch() {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const [questionData, setQuestionData] = useState([]);
+  // let { keyword } = useParams();
+  // const [data, setData] = useState([]);
+
   useEffect(() => {
-    axios.get("http://localhost:4000/discussions").then((res) => {
+    setIsLoading(true);
+    axios.get("http://localhost:3001/dummyData").then((res) => {
       console.log(res.data);
       setQuestionData(res.data);
+      setIsLoading(false);
     });
   }, []);
+
   /** 2023/04/18 - Ask 버튼 클릭 시 질문작성페이지로 이동하는 함수 - by 박수범 */
   const AskBtnHandler = () => {
     navigate("/ask");
@@ -134,7 +143,7 @@ export default function Main() {
           <ContentsContainer>
             <ContentsHeader>
               <ContentsHeaderTop>
-                <h1>All Question</h1>
+                <h1>Search Results</h1>
                 <ContentsHeaderAsk onClick={AskBtnHandler}>
                   Ask Question
                 </ContentsHeaderAsk>
@@ -142,14 +151,28 @@ export default function Main() {
               <ContentsHeaderBottom>
                 <HeaderCount>{1} questions</HeaderCount>
                 <BtnContainer>
-                  <HeaderTapBtn redious="4px 0px 0px 4px">Newest</HeaderTapBtn>
-                  <HeaderTapBtn redious="0px">Oldest</HeaderTapBtn>
-                  <HeaderTapBtn redious="0px 4px 4px 0px">View</HeaderTapBtn>
+                  <HeaderTapBtn redious="4px 0px 0px 4px">
+                    Relevance
+                  </HeaderTapBtn>
+                  <HeaderTapBtn redious="0px">Newest</HeaderTapBtn>
+                  <HeaderTapBtn redious="0px 4px 4px 0px">More</HeaderTapBtn>
                 </BtnContainer>
               </ContentsHeaderBottom>
             </ContentsHeader>
-            <Questionmap questionData={questionData} />
-            <PageContainer setQuestionData={setQuestionData} />
+            {questionData.length === 0 ? (
+              isLoading ? (
+                <Loading />
+              ) : (
+                <NoResult />
+              )
+            ) : isLoading ? (
+              <Loading />
+            ) : (
+              <>
+                <Questionmap questionData={questionData} />
+                <PageContainer setQuestionData={setQuestionData} />
+              </>
+            )}
           </ContentsContainer>
           <SidebarContainer>
             <Sidebar />
