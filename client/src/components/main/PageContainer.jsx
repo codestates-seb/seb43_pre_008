@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import axios from "axios";
-
+/** 2023/04/20 - 페이지네이션 영역 컴포넌트 - by 박수범 */
 const PageContaine = styled.div`
   display: flex;
   -webkit-box-pack: justify;
