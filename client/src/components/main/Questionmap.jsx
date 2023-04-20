@@ -9,12 +9,12 @@ const QuestionListul = styled.ul`
   justify-content: center;
 `;
 
-export default function Questionmap({ questionData }) {
+export default function Questionmap({ questionData, currentPosts }) {
   return (
     <QuestionListul>
-      {questionData.map((list) => (
-        <Questionlist el={list} key={list.id} />
-      ))}
+      {currentPosts && questionData.length > 0
+        ? currentPosts.map((list) => <Questionlist el={list} key={list.id} />)
+        : null}
     </QuestionListul>
   );
 }

@@ -113,6 +113,12 @@ export default function Main() {
   const navigate = useNavigate();
   /** 2023/04/20 - 질문리스트를 관리하는 state - by 박수범 */
   const [questionData, setQuestionData] = useState([]);
+  const [count, setCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(5);
+  const [indexOfLastPost, setIndexOfLastPost] = useState(0);
+  const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
+  const [currentPosts, setCurrentPosts] = useState(0);
 
   /** 2023/04/20 - 렌더링 시 질문리스트들을 받아오는 함수 - by 박수범 */
   useEffect(() => {
@@ -120,7 +126,17 @@ export default function Main() {
       console.log(res.data);
       setQuestionData(res.data);
     });
-  }, []);
+    setCount(questionData.length);
+    setIndexOfLastPost(currentPage * postPerPage);
+    setIndexOfFirstPost(indexOfLastPost - postPerPage);
+    setCurrentPosts(questionData.slice(indexOfFirstPost, indexOfLastPost));
+  }, [
+    currentPage,
+    indexOfLastPost,
+    indexOfFirstPost,
+    questionData,
+    postPerPage,
+  ]);
 
   /** 2023/04/18 - Ask 버튼 클릭 시 질문작성페이지로 이동하는 함수 - by 박수범 */
   const AskBtnHandler = () => {
@@ -144,7 +160,7 @@ export default function Main() {
                 </ContentsHeaderAsk>
               </ContentsHeaderTop>
               <ContentsHeaderBottom>
-                <HeaderCount>{questionData.length} questions</HeaderCount>
+                <HeaderCount>{currentPosts.length} questions</HeaderCount>
                 <BtnContainer>
                   <HeaderTapBtn redious="4px 0px 0px 4px">Newest</HeaderTapBtn>
                   <HeaderTapBtn redious="0px">Oldest</HeaderTapBtn>
@@ -152,8 +168,18 @@ export default function Main() {
                 </BtnContainer>
               </ContentsHeaderBottom>
             </ContentsHeader>
-            <Questionmap questionData={questionData} />
-            <PageContainer setQuestionData={setQuestionData} />
+            <Questionmap
+              questionData={questionData}
+              currentPosts={currentPosts}
+            />
+            <PageContainer
+              page={currentPage}
+              count={count}
+              setPage={setCurrentPage}
+              setQuestionData={setQuestionData}
+              setPostPerPage={setPostPerPage}
+              postPerPage={postPerPage}
+            />
           </ContentsContainer>
           <SidebarContainer>
             <Sidebar />
