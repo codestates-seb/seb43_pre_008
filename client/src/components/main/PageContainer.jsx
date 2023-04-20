@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import axios from "axios";
 
 const PageContaine = styled.div`
   display: flex;
@@ -58,7 +59,14 @@ const PageContaine = styled.div`
   }
 `;
 
-export default function PageContainer() {
+export default function PageContainer({ setQuestionData }) {
+  const pageBtn = (page) => {
+    axios
+      .get(`http://localhost:4000/discussions/pagesize=${page}`)
+      .then((res) => {
+        setQuestionData(res.data);
+      });
+  };
   return (
     <PageContaine>
       <ul>
@@ -89,9 +97,9 @@ export default function PageContainer() {
         </li>
       </ul>
       <div>
-        <button>15</button>
-        <button>30</button>
-        <button>50</button>
+        <button onClick={() => pageBtn(15)}>15</button>
+        <button onClick={() => pageBtn(30)}>30</button>
+        <button onClick={() => pageBtn(50)}>50</button>
         <p>per page</p>
       </div>
     </PageContaine>

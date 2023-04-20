@@ -34,7 +34,6 @@ const LoginButton = ({ type, onClick }) => {
 };
 
 const SocialLoginButton = styled.button`
-  display: inline-block;
   display: flex;
   justify-content: center;
   align-items: center;

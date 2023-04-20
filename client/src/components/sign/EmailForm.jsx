@@ -3,7 +3,9 @@ import styled from "styled-components";
 const EmailForm = ({ loginEmail, setLoginEmail }) => {
   return (
     <EmailBlock>
-      <EmailLabel htmlFor="emailInput">Email</EmailLabel>
+      <div>
+        <EmailLabel htmlFor="emailInput">Email</EmailLabel>
+      </div>
       <EmailInput
         id="emailInput"
         value={loginEmail}
@@ -15,12 +17,13 @@ const EmailForm = ({ loginEmail, setLoginEmail }) => {
 };
 
 const EmailBlock = styled.div`
-  margin: 6px 0;
+  margin: 0;
+  border: 0;
   width: 100%;
 `;
 
 const EmailLabel = styled.label`
-  display: inline-block;
+  display: flex;
   margin: 2px 0;
   padding: 0 2px;
   width: 100%;
@@ -37,7 +40,8 @@ const EmailLabel = styled.label`
 const EmailInput = styled.input.attrs({
   type: "text",
 })`
-  display: inline-block;
+  border: 1px solid hsl(210, 8%, 80%);
+  display: flex;
   width: 100%;
   padding: 7px 9px;
   text-align: start;
@@ -48,6 +52,12 @@ const EmailInput = styled.input.attrs({
     "Liberation Sans", sans-serif;
   box-shadow: none;
   border-radius: 3px;
+
+  &:focus {
+    outline: none;
+    border-color: hsl(210, 50%, 50%);
+    box-shadow: 0 0 0 2px hsl(210, 50%, 50%);
+  }
 `;
 
 export default EmailForm;
