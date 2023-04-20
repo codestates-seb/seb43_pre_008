@@ -4,7 +4,7 @@ import LoginInputForm from "../components/sign/LoginInputForm";
 import logo_stack from "../img/logo_stack.svg";
 import copyButton from "../img/copyButton.svg";
 import { Link } from "react-router-dom";
-
+import Header from "../share/Header";
 const Page = styled.div`
   width: 100vw;
   height: 100vh;
