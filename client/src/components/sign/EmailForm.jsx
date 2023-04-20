@@ -3,7 +3,9 @@ import styled from "styled-components";
 const EmailForm = ({ loginEmail, setLoginEmail }) => {
   return (
     <EmailBlock>
-      <EmailLabel htmlFor="emailInput">Email</EmailLabel>
+      <div>
+        <EmailLabel htmlFor="emailInput">Email</EmailLabel>
+      </div>
       <EmailInput
         id="emailInput"
         value={loginEmail}
@@ -21,7 +23,7 @@ const EmailBlock = styled.div`
 `;
 
 const EmailLabel = styled.label`
-  display: block;
+  display: flex;
   margin: 2px 0;
   padding: 0 2px;
   width: 100%;
@@ -39,7 +41,7 @@ const EmailInput = styled.input.attrs({
   type: "text",
 })`
   border: 1px solid hsl(210, 8%, 80%);
-  display: block;
+  display: flex;
   width: 100%;
   padding: 7px 9px;
   text-align: start;

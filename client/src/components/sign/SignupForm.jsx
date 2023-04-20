@@ -7,7 +7,7 @@ const DisplayNameInput = styled.input.attrs({
   type: "text",
 })`
   border: 1px solid hsl(210, 8%, 85%);
-  display: block;
+  display: flex;
   padding: 7px 9px;
   width: 100%;
   text-align: start;
@@ -26,7 +26,7 @@ const DisplayNameInput = styled.input.attrs({
   }
 `;
 const DisplayNameLabel = styled.label`
-  display: block;
+  display: flex;
   padding: 0 2px;
   text-align: left;
   font-size: 15px;
@@ -41,7 +41,7 @@ const EmailInput = styled.input.attrs({
   type: "text",
 })`
   border: 1px solid hsl(210, 8%, 85%);
-  display: block;
+  display: flex;
   padding: 7px 9px;
   width: 100%;
   text-align: start;
@@ -60,7 +60,7 @@ const EmailInput = styled.input.attrs({
   }
 `;
 const EmailLabel = styled.label`
-  display: block;
+  display: flex;
   padding: 0 2px;
   text-align: left;
   font-size: 15px;
@@ -73,7 +73,7 @@ const EmailLabel = styled.label`
 `;
 
 const PasswordLabel = styled.label`
-  display: block;
+  display: flex;
   padding: 0 2px;
   text-align: left;
   font-size: 15px;
@@ -88,7 +88,7 @@ const PasswordInput = styled.input.attrs({
   type: "password",
 })`
   border: 1px solid hsl(210, 8%, 85%);
-  display: block;
+  display: flex;
   padding: 7px 9px;
   width: 100%;
   text-align: start;
@@ -170,9 +170,11 @@ const SignupForm = ({
   return (
     <Sign onSubmit={(e) => handleSignupButton(e)}>
       <ContentDiv>
-        <DisplayNameLabel htmlFor="displayNameInput">
-          Display name
-        </DisplayNameLabel>
+        <div>
+          <DisplayNameLabel htmlFor="displayNameInput">
+            Display name
+          </DisplayNameLabel>
+        </div>
         <DisplayNameInput
           id="displayNameInput"
           onChange={(e) => setDisplayName(e.target.value)}
@@ -180,11 +182,15 @@ const SignupForm = ({
         />
       </ContentDiv>
       <ContentDiv>
-        <EmailLabel>Email</EmailLabel>
+        <div>
+          <EmailLabel>Email</EmailLabel>
+        </div>
         <EmailInput onChange={(e) => setSignupEmail(e.target.value)} required />
       </ContentDiv>
       <ContentDiv>
-        <PasswordLabel>Password</PasswordLabel>
+        <div>
+          <PasswordLabel>Password</PasswordLabel>
+        </div>
         <PasswordInput
           onChange={(e) => setSignupPassword(e.target.value)}
           required
