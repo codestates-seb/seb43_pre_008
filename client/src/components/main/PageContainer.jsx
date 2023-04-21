@@ -26,7 +26,7 @@ const PageContaine = styled.div`
       padding: 0px 8px;
       background-color: white;
       &:focus {
-        background-color: orange;
+        background-color: rgb(246, 127, 29);
         color: white;
       }
     }
@@ -53,7 +53,7 @@ const PageContaine = styled.div`
         background-color: rgb(223, 225, 227);
       }
       > a {
-        color: #545353;
+        color: gray;
         text-decoration: none;
       }
     }
@@ -67,6 +67,7 @@ export default function PageContainer({
   setPostPerPage,
   postPerPage,
 }) {
+  /** 2023/04/21 - 한 페이지에 리스트를 몇 개 출력할지 정하는 버튼 - by 박수범 */
   const pageBtn = (e, page) => {
     e.preventDefault();
     setPostPerPage(page);
