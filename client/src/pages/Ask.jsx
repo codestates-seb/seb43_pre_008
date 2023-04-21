@@ -18,10 +18,11 @@ import {
 } from "../components/ask/AskHelper";
 import axios from "axios";
 import bg from "../img/askbackground.svg";
+/** 23/4/21 배경색 지정을 위한 전체 감싸는 Wrap -by 고정윤 */
 const Wrap = styled.div`
   background-color: #f8f9f9;
 `;
-/** 23/4/21 질문 작성페이지 전체 컨테이너 -by 고정윤*/
+/** 23/4/21 질문 작성페이지 전체 컨테이너 -by 고정윤 */
 const Container = styled.div`
   width: 1264px;
   padding: 0 24px;
