@@ -337,15 +337,15 @@ const Ask = () => {
       <Header />
       <Container>
         <AskTitle>
-          <h1>Ask a question</h1>
+          <h1>Ask a public question</h1>
         </AskTitle>
         <WrtieWrapper>
           <WriteMain>
             <Notice>
               <h2>Writing a good question</h2>
               <p>
-                You’re ready to <span>ask</span> a{" "}
-                <span>programming-related question</span> and this form will
+                You’re ready to <span>ask</span> a
+                <span> programming-related question</span> and this form will
                 help guide you through the process. Looking to ask a
                 non-programming question? See <span>the topics here</span> to
                 find a relevant site.

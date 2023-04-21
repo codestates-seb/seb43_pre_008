@@ -101,6 +101,10 @@ const TagContainer = styled.div`
       margin-right: 4px;
       border-radius: 3px;
       background: rgb(220, 233, 242);
+      cursor: pointer;
+      &:hover {
+        background: rgb(196, 222, 240);
+      }
       > span {
         color: rgb(39, 104, 145);
         font-size: 12px;
@@ -134,7 +138,7 @@ export default function Questionlist({ el }) {
       </LeftContainer>
       <RightContainer>
         <QuestionContents>
-          <a href="/">{el.title}</a>
+          <a href="/question">{el.title}</a>
         </QuestionContents>
         <QuestionContents>
           <div>
@@ -152,7 +156,7 @@ export default function Questionlist({ el }) {
               </TagContainer>
             </QuestionContents>
             <MemberandcteateAt>
-              <a href="/">{el.username}</a>
+              <a href="/mypage">{el.username}</a>
               <span></span>
               <span>{el.createAt}</span>
             </MemberandcteateAt>

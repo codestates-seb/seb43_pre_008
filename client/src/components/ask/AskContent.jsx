@@ -21,6 +21,7 @@ export const InputGroup = styled.section`
 
   &.active {
     flex-direction: row;
+    background-color: transparent;
     button {
       display: block;
     }

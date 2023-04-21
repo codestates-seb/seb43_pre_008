@@ -114,18 +114,28 @@ const BtnContainer = styled.p`
 export default function QuestionSearch() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  /** 2023/04/20 - 질문리스트를 관리하는 state - by 박수범 */
   const [questionData, setQuestionData] = useState([]);
+  const [count, setCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(5);
+  const [indexOfLastPost, setIndexOfLastPost] = useState(0);
+  const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
+  const [currentPosts, setCurrentPosts] = useState(0);
   // let { keyword } = useParams();
   // const [data, setData] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
     axios.get("http://localhost:3001/dummyData").then((res) => {
-      console.log(res.data);
       setQuestionData(res.data);
-      setIsLoading(false);
     });
-  }, []);
+    setCount(questionData.length);
+    setIndexOfLastPost(currentPage * postPerPage);
+    setIndexOfFirstPost(indexOfLastPost - postPerPage);
+    setCurrentPosts(questionData.slice(indexOfFirstPost, indexOfLastPost));
+    setIsLoading(false);
+  }, [currentPage, postPerPage, indexOfLastPost, indexOfFirstPost]);
 
   /** 2023/04/18 - Ask 버튼 클릭 시 질문작성페이지로 이동하는 함수 - by 박수범 */
   const AskBtnHandler = () => {
@@ -169,8 +179,18 @@ export default function QuestionSearch() {
               <Loading />
             ) : (
               <>
-                <Questionmap questionData={questionData} />
-                <PageContainer setQuestionData={setQuestionData} />
+                <Questionmap
+                  questionData={questionData}
+                  currentPosts={currentPosts}
+                />
+                <PageContainer
+                  page={currentPage}
+                  count={count}
+                  setPage={setCurrentPage}
+                  setQuestionData={setQuestionData}
+                  setPostPerPage={setPostPerPage}
+                  postPerPage={postPerPage}
+                />
               </>
             )}
           </ContentsContainer>
