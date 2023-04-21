@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import Pagination from "react-js-pagination";
 
 /** 2023/04/20 - 페이지네이션 영역 컴포넌트 - by 박수범 */
@@ -75,6 +74,7 @@ export default function PageContainer({
   /** 2023/04/21 - 한 페이지에 리스트를 몇 개 출력할지 정하는 버튼 - by 박수범 */
   const pageBtn = (e, page) => {
     e.preventDefault();
+    window.scrollTo(0, 0);
     setPostPerPage(page);
   };
   return (
