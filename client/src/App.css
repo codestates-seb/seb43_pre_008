@@ -17,3 +17,8 @@
 h1 {
   font-size: 27px
 }
+
+.active {
+  background-color: rgb(246, 127, 29);
+  color: white;
+}
