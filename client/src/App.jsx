@@ -11,14 +11,32 @@ import Signup from "./pages/Signup";
 import MypageSetting from "./pages/Mypages/MypageSetting";
 import MypageDelete from "./pages/Mypages/MypageDelete";
 import MypageEdit from "./pages/Mypages/MypageEdit";
+import axios from "axios";
+import { useState, useLayoutEffect } from "react";
 
 function App() {
+  const [questionData, setQuestionData] = useState([]);
+  useLayoutEffect(() => {
+    axios.get("http://localhost:4000/discussions").then((res) => {
+      setQuestionData(res.data);
+      console.log(res.data);
+    });
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="App">
         <div>
           <Routes>
-            <Route path="/" element={<Main />} />
+            <Route
+              path="/"
+              element={
+                <Main
+                  questionData={questionData}
+                  setQuestionData={setQuestionData}
+                />
+              }
+            />
             <Route path="/ask" element={<Ask />} />
             <Route path="/mypage" element={<Mypage />} />
             <Route path="/mypage/profile" element={<Mypage />} />

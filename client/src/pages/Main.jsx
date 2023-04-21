@@ -6,7 +6,7 @@ import Nav from "../share/Nav";
 import { useNavigate } from "react-router-dom";
 import PageContainer from "../components/main/PageContainer";
 import Questionmap from "../components/main/Questionmap";
-import axios from "axios";
+
 import { useState, useEffect } from "react";
 
 /** 2023/04/18 - 전체 영역 컴포넌트 - by 박수범 */
@@ -109,33 +109,23 @@ const BtnContainer = styled.p`
   align-items: center;
 `;
 
-export default function Main() {
+export default function Main({ questionData, setQuestionData }) {
   const navigate = useNavigate();
   /** 2023/04/20 - 질문리스트를 관리하는 state - by 박수범 */
-  const [questionData, setQuestionData] = useState([]);
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(15);
   const [indexOfLastPost, setIndexOfLastPost] = useState(0);
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
-  const [currentPosts, setCurrentPosts] = useState(0);
+  const [currentPosts, setCurrentPosts] = useState([]);
 
   /** 2023/04/20 - 렌더링 시 질문리스트들을 받아오는 함수 - by 박수범 */
   useEffect(() => {
-    axios.get("http://localhost:4000/discussions").then((res) => {
-      setQuestionData(res.data);
-    });
     setCount(questionData.length);
     setIndexOfLastPost(currentPage * postPerPage);
     setIndexOfFirstPost(indexOfLastPost - postPerPage);
     setCurrentPosts(questionData.slice(indexOfFirstPost, indexOfLastPost));
-  }, [
-    currentPage,
-    indexOfLastPost,
-    indexOfFirstPost,
-    questionData,
-    postPerPage,
-  ]);
+  }, [currentPage, indexOfLastPost, indexOfFirstPost, postPerPage]);
 
   /** 2023/04/18 - Ask 버튼 클릭 시 질문작성페이지로 이동하는 함수 - by 박수범 */
   const AskBtnHandler = () => {
