@@ -123,7 +123,6 @@ export default function Main() {
   /** 2023/04/20 - 렌더링 시 질문리스트들을 받아오는 함수 - by 박수범 */
   useEffect(() => {
     axios.get("http://localhost:4000/discussions").then((res) => {
-      console.log(res.data);
       setQuestionData(res.data);
     });
     setCount(questionData.length);
