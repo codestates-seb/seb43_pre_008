@@ -20,5 +20,9 @@ h1 {
 
 .active {
   background-color: rgb(246, 127, 29);
-  color: white;
+  pointer-events: none;
+}
+
+.undefined {
+  color: rgb(255, 255, 255) !important;
 }

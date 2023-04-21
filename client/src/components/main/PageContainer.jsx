@@ -25,6 +25,11 @@ const PageContaine = styled.div`
       margin: 0px 3px;
       padding: 0px 8px;
       background-color: white;
+      color: gray;
+      cursor: pointer;
+      &:hover {
+        background-color: rgb(223, 225, 227);
+      }
       &:focus {
         background-color: rgb(246, 127, 29);
         color: white;
