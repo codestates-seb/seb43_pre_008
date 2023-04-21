@@ -96,7 +96,7 @@ const HeaderTapBtn = styled.button`
   }
 `;
 
-/** 2023/04/18 - 컨텐츠헤더 바텀 컴포넌트 - by 박수범 */
+/** 2023/04/18 - 컨텐츠헤더 바텀 카운트 컴포넌트 - by 박수범 */
 const HeaderCount = styled.p`
   font-size: 17px;
   color: rgb(35, 38, 41);
@@ -115,7 +115,7 @@ export default function Main() {
   const [questionData, setQuestionData] = useState([]);
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(5);
+  const [postPerPage, setPostPerPage] = useState(15);
   const [indexOfLastPost, setIndexOfLastPost] = useState(0);
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
   const [currentPosts, setCurrentPosts] = useState(0);
@@ -153,7 +153,7 @@ export default function Main() {
           <ContentsContainer>
             <ContentsHeader>
               <ContentsHeaderTop>
-                <h1>All Question</h1>
+                <h1>All Questions</h1>
                 <ContentsHeaderAsk onClick={AskBtnHandler}>
                   Ask Question
                 </ContentsHeaderAsk>
