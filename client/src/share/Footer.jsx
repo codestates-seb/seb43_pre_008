@@ -2,6 +2,7 @@ import { ReactComponent as LogoIcon } from "../img/mobileLogo.svg";
 import styled from "styled-components";
 /** 2023/04/19 - 풋터 전체 영역 컴포넌트 - by 이진하 */
 export const FooterWrapper = styled.footer`
+  padding: 12px 24px;
   bottom: 0;
   display: flex;
   justify-content: center;
