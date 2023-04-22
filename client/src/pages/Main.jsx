@@ -6,7 +6,6 @@ import Nav from "../share/Nav";
 import { useNavigate } from "react-router-dom";
 import PageContainer from "../components/main/PageContainer";
 import Questionmap from "../components/main/Questionmap";
-
 import { useState, useEffect } from "react";
 
 /** 2023/04/18 - 전체 영역 컴포넌트 - by 박수범 */
