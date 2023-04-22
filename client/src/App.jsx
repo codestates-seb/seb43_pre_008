@@ -44,7 +44,7 @@ function App() {
             <Route path="/mypage/userdelete" element={<MypageDelete />} />
             <Route path="/mypage/useredit" element={<MypageEdit />} />
             <Route path="/notfound" element={<Notfound />} />
-            <Route path="/question" element={<Question />} />
+            <Route path="/question/:questionId" element={<Question />} />
             <Route path="/signin" element={<Signin />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
