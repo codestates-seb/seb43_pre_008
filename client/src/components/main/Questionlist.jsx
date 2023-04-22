@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 /** 2023-04-18 - 질문리스트 컨테이너 컴포넌트 - by 박수범*/
 const QuestionContainer = styled.div`
@@ -138,7 +139,22 @@ export default function Questionlist({ el }) {
       </LeftContainer>
       <RightContainer>
         <QuestionContents>
-          <a href="/question">{el.title}</a>
+          <Link
+            to={`/question/${el.id}`}
+            state={{
+              id: el.id,
+              title: el.title,
+              answer: el.answer,
+              content: el.content,
+              createAt: el.createAt,
+              username: el.username,
+              views: el.views,
+              tag: el.tag,
+              vote: el.vote,
+            }}
+          >
+            {el.title}
+          </Link>
         </QuestionContents>
         <QuestionContents>
           <div>
@@ -156,7 +172,7 @@ export default function Questionlist({ el }) {
               </TagContainer>
             </QuestionContents>
             <MemberandcteateAt>
-              <a href="/mypage">{el.username}</a>
+              <Link to="/mypage">{el.username}</Link>
               <span></span>
               <span>{el.createAt}</span>
             </MemberandcteateAt>
