@@ -6,7 +6,6 @@ import Mypage from "./pages/Mypages/Mypage";
 import Ask from "./pages/Ask";
 import QuestionSearch from "./pages/QuestionSearch";
 import Question from "./pages/Question";
-import QuestionSearch from "./pages/QuestionSearch";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import MypageSetting from "./pages/Mypages/MypageSetting";
