@@ -9,7 +9,7 @@ import NoResult from "../components/search/NoResult";
 import PageContainer from "../components/main/PageContainer";
 import Questionmap from "../components/main/Questionmap";
 import Loading from "../components/Loading";
-import axios from "axios";
+// import axios from "axios";
 
 /** 2023/04/18 - 전체 영역 컴포넌트 - by 박수범 */
 const LayoutArea = styled.div`
@@ -111,25 +111,21 @@ const BtnContainer = styled.p`
   align-items: center;
 `;
 
-export default function QuestionSearch() {
+export default function QuestionSearch({ questionData, setQuestionData }) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   /** 2023/04/20 - 질문리스트를 관리하는 state - by 박수범 */
-  const [questionData, setQuestionData] = useState([]);
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(5);
+  const [postPerPage, setPostPerPage] = useState(15);
   const [indexOfLastPost, setIndexOfLastPost] = useState(0);
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
-  const [currentPosts, setCurrentPosts] = useState(0);
+  const [currentPosts, setCurrentPosts] = useState([]);
   // let { keyword } = useParams();
   // const [data, setData] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get("http://localhost:3001/dummyData").then((res) => {
-      setQuestionData(res.data);
-    });
     setCount(questionData.length);
     setIndexOfLastPost(currentPage * postPerPage);
     setIndexOfFirstPost(indexOfLastPost - postPerPage);
@@ -169,7 +165,7 @@ export default function QuestionSearch() {
                 </BtnContainer>
               </ContentsHeaderBottom>
             </ContentsHeader>
-            {questionData.length === 0 ? (
+            {questionData === 0 ? (
               isLoading ? (
                 <Loading />
               ) : (
