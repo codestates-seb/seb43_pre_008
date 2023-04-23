@@ -4,7 +4,6 @@ const NoResultWrap = styled.div`
   margin-top: 10px;
   width: 100%;
   border-top: 1px solid #d4d4d4;
-
   padding: 24px;
   text-align: center;
   svg {

@@ -156,6 +156,7 @@ export default function Header() {
   /** 2023/04/16 - 로고클릭 시 홈으로 리다이렉트 시켜주는 함수 - by 박수범 */
   const logoClickEvent = () => {
     console.log("홈으로 이동합니당.");
+    window.scrollTo(0, 0);
     navigate("/");
   };
 
