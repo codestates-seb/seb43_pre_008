@@ -43,7 +43,15 @@ function App() {
             <Route path="/mypage/setting" element={<MypageSetting />} />
             <Route path="/mypage/userdelete" element={<MypageDelete />} />
             <Route path="/mypage/useredit" element={<MypageEdit />} />
-            <Route path="/questionsearch" element={<QuestionSearch />} />
+            <Route
+              path="/questionsearch"
+              element={
+                <QuestionSearch
+                  questionData={questionData}
+                  setQuestionData={setQuestionData}
+                />
+              }
+            />
             <Route path="/question/:questionId" element={<Question />} />
             <Route path="/question" element={<Question />} />
             <Route path="/signin" element={<Signin />} />
