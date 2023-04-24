@@ -187,19 +187,23 @@ const Ask = () => {
   const introNextRef = useRef();
   const expandNextRef = useRef();
   const answerNextRef = useRef();
-  const tagNextRef = useRef();
   const postRef = useRef();
 
+  //tag 키값 변수
+  let nextTagId = useRef(0);
   /** 지금 입력 tag 관리 */
   const [tag, setTag] = useState("");
   /** tag 목록 관리 */
   const [tags, setTags] = useState([]);
   /** tag 목록 관리 */
   const tagOutBox = useRef();
+  const tagInputRef = useRef();
+  const tagMinimumRef = useRef();
+  const tagMaximumRef = useRef();
 
   const postQuestion = async (body, token) => {
     //json 형태로 body 받아옴
-    const response = axios.post(`${URL}/questions/ask`, body, {
+    const response = axios.post(`http://localhost:4000/discussions`, body, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `${token}`,
@@ -216,6 +220,10 @@ const Ask = () => {
       content: `${body.intro}<p><br></p>${body.expand}`,
       text: `${body.introText}\n${body.expandText}`,
       tags: [...body.tags],
+      vote: 0,
+      answer: 0,
+      views: 0,
+      createAt: new Date().toLocaleString(),
     });
 
     postQuestion(postBody, token)
@@ -241,7 +249,7 @@ const Ask = () => {
     setOpened([...opened, next]);
     e.target.classList.add("remove");
   };
-
+  /** 버튼 클릭시 도움말 활성화 */
   useEffect(() => {
     window.addEventListener("click", onHelperHandler);
     titleNextRef.current.addEventListener("click", (e) => {
@@ -252,9 +260,6 @@ const Ask = () => {
     });
     expandNextRef.current.addEventListener("click", (e) => {
       openNext(e, "tags");
-    });
-    tagNextRef.current.addEventListener("click", (e) => {
-      openNext(e, "answer");
     });
   }, [opened]);
 
@@ -300,32 +305,87 @@ const Ask = () => {
   };
   /** 태그 갯수 인식 */
   const onTagChange = () => {
+    const tagOutBoxClassList = tagOutBox.current.classList;
+    const tagMinimumRefClassList = tagMinimumRef.current.classList;
+    const tagMaximumRefClassList = tagMaximumRef.current.classList;
+
     if (tags.length < 1) {
-      tagOutBox.current.classList.add("error");
+      tagOutBoxClassList.add("error");
+      tagMinimumRefClassList.add("on");
+      tagMaximumRefClassList.remove("on");
     } else if (tags.length === 5) {
-      tagOutBox.current.classList.add("error");
+      tagOutBoxClassList.add("error");
+      tagMinimumRefClassList.remove("on");
+      tagMaximumRefClassList.add("on");
     } else {
-      if (tagOutBox.current.classList.contains("error")) {
-        tagOutBox.current.classList.remove("error");
-      }
+      tagOutBoxClassList.remove("error");
+      tagMinimumRefClassList.remove("on");
+      tagMaximumRefClassList.remove("on");
     }
   };
+  useEffect(() => {
+    if (tags.length > 0) {
+      postRef.current.disabled = false;
+    } else {
+      postRef.current.disabled = true;
+    }
+
+    // 추가 삭제를 위해 객체로 관리하던 tags를 배열로 변경
+    const tagNameArr = tags.map((obj) => {
+      return obj.name;
+    });
+
+    setBody({
+      ...body,
+      tags: [...tagNameArr],
+    });
+  }, [tags]);
+  // 태그 박스에 포커스 효과 제어
+  const onTagFocused = (e) => {
+    e.target.closest("label").classList.toggle("focused");
+  };
+
+  useEffect(() => {
+    const handleNextClick = (e, section) => {
+      openNext(e, section);
+    };
+
+    window.addEventListener("click", onHelperHandler);
+    titleNextRef.current.addEventListener("click", (e) =>
+      handleNextClick(e, "introduce"),
+    );
+    introNextRef.current.addEventListener("click", (e) =>
+      handleNextClick(e, "expand"),
+    );
+    expandNextRef.current.addEventListener("click", (e) =>
+      handleNextClick(e, "tags"),
+    );
+    tagInputRef.current.addEventListener("focus", onTagFocused);
+    tagInputRef.current.addEventListener("blur", onTagFocused);
+  }, [opened]);
 
   /** 태그갯수 인식해서 tags에 담기 */
   useEffect(() => {
     onTagChange();
   }, [tags]);
 
+  useEffect(() => {
+    tagOutBox.current.classList.remove("error");
+    tagMinimumRef.current.classList.remove("on");
+  }, []);
+
   /** tag Enter 인식 */
-  const onKeyPress = (e) => {
+  const onKeyDown = (e) => {
     if (e.key === "Enter") {
       if (tags.length < 5 && e.target.value.length > 0) {
-        setTags([...tags, { name: tag }]);
+        setTags([...tags, { name: tag, id: nextTagId.current }]);
+        nextTagId.current++;
+        tagInputRef.current.value = "";
+        tagInputRef.current.focus();
         setTag("");
       }
     }
   };
-
   /** 작성하던것 지우고 상단으로 */
   const onDiscard = () => {
     navigate(0);
@@ -560,16 +620,20 @@ const Ask = () => {
                       id="tag-input"
                       type="text"
                       placeholder="Type a Tag and Press Enter"
+                      ref={tagInputRef}
                       onChange={(e) => {
                         setTag(e.target.value);
                         onTagChange(e);
                       }}
-                      onKeyPress={onKeyPress}
+                      onKeyDown={onKeyDown}
                     ></input>
                   </TagsInputGroup>
-                  <NextBtn ref={tagNextRef} disabled>
-                    Next
-                  </NextBtn>
+                  <small ref={tagMinimumRef}>
+                    최소 1개의 태그를 입력해주세요.
+                  </small>
+                  <small ref={tagMaximumRef}>
+                    최대 5개까지 입력 가능합니다.
+                  </small>
                 </InputSec>
                 <HelperWrap>
                   <HelperSec className="helper">
@@ -666,7 +730,7 @@ const Ask = () => {
                   ref={postRef}
                   type="submit"
                   className={opened.indexOf("post") !== -1 ? "opened" : ""}
-                  disabled
+                  // disabled
                 >
                   Post your question
                 </PostBtn>
