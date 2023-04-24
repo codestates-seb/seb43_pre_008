@@ -2,107 +2,145 @@
   "discussions": [
     {
       "id": 0,
-      "vote": 1,
-      "views": 18,
-      "title": "Stripe 리액트 컴포넌트와 Django를 사용하여 사용자를 리다이렉트하는 방법",
-      "body": "사용자가 결제를 완료한 후 (성공 또는 실패에 상관없이) 자동으로 페이지로 리다이렉트하고 싶습니다. 현재 결제가 성공적으로 진행되고, 스트라이프에서 필요한 정보를 검색하는 데 성공했습니다. 그러나 성공적인 결제 후에는 리다이렉션이 발생하지 않습니다. 스트라이프에서 제안하는 리액트 컴포넌트를 사용하여 어떻게 진행해야 할까요?",
-      "tag": ["python", "reactjs", "django", "abcdefg"],
-      "author": {
-        "name": "yuting",
-        "answered": 635,
-        "avatar": "Img"
-      },
-      "time": "2023-04-20T00:00:00.000Z",
-      "content": [
-        "사용자가 결제를 완료한 후 (성공 또는 실패에 상관없이) 자동으로 페이지로 리다이렉트하고 싶습니다.",
-        "현재 결제가 성공적으로 진행되고, 스트라이프에서 필요한 정보를 검색하는 데 성공했습니다.",
-        "그러나 성공적인 결제 후에는 리다이렉션이 발생하지 않습니다.",
-        "스트라이프에서 제안하는 리액트 컴포넌트를 사용하여 어떻게 진행해야 할까요?",
-        "여기에 제 작업이 있습니다.",
-        "Offers.js: Stripe에서 제공하는 리액트 컴포넌트",
-        "<stripe-pricing-table",
-        "pricing-table-id=\"prctbl_<my_pricing_table_key>\"",
-        "publishable-key=\"pk_test_<my-stripe-public-key>\"",
-        "// 사용자 정보: Django 모델 업데이트를 위한",
-        "customer-email={asdf}",
-        "client-reference-id={asdf}",
-        ">",
-        "</stripe-pricing-table>",
-        "Offers.js: Stripe에서 제공하는 리액트 컴포넌트",
-        "<stripe-pricing-table",
-        "pricing-table-id=\"prctbl_<my_pricing_table_key>\"",
-        "publishable-key=\"pk_test_<my-stripe-public-key>\"",
-        "// 사용자 정보: Django 모델 업데이트를 위한",
-        "customer-email={asdf}",
-        "client-reference-id={asdf}",
-        ">",
-        "</stripe-pricing-table>"
-      ],
-      "answer": ["dummyAnswerData", "dwrwr", "dwrw2r", "21512sss"]
+      "title": "나는 개발자를 할 수 있을까요?",
+      "content": "정말 감자가 개발자가 될 수 있다구요? 당신말을 믿어도 되나요? 나는 하고싶다.하차를.빠르게.하루라도",
+      "vote": 0,
+      "answer": 0,
+      "views": 41,
+      "username": "bumpist",
+      "createAt": "2023-04-05-11:59",
+      "tag": [
+        "react",
+        "recoil"
+      ]
     },
     {
       "id": 1,
-      "vote": 5,
-      "views": 35,
-      "title": "D3.js를 사용하여 시계열 차트에 마우스 오버 효과 추가 방법",
-      "body": "D3.js를 사용하여 시계열 차트를 만들었습니다. 이제 마우스를 차트 위로 이동하면 데이터 포인트에 툴팁이 표시되고 세로선이 생성되어 해당 데이터 포인트에 따라 이동하는 마우스 오버 효과를 추가하려고 합니다. 이를 D3와 자바스크립트로 어떻게 구현할 수 있나요?",
-      "tag": ["javascript", "d3.js", "charts", "timeseries"],
-      "author": {
-        "name": "Alex",
-        "answered": 531,
-        "avatar": "Img"
-      },
-      "time": "2023-04-20T01:30:00.000Z",
-      "content": [
-        "D3.js를 사용하여 시계열 차트를 만들었습니다.",
-        "이제 마우스를 차트 위로 이동하면 데이터 포인트에 툴팁이 표시되고 세로선이 생성되어 해당 데이터 포인트에 따라 이동하는 마우스 오버 효과를 추가하려고 합니다.",
-        "이를 D3와 자바스크립트로 어떻게 구현할 수 있나요?",
-        "차트에 해당 효과를 추가하기 위해 사용된 코드를 아래에 첨부합니다."
-      ],
-      "answer": "dummyAnswerData"
+      "title": "네이버 코테 할만하던데요?",
+      "content": "네이버 코테 괜히쫄았네 ㅋㅋㅋ 4솔로 깔끔하게 끝냈습니다. 43기여러분 난 먼저 갑니다 ? 빠위이이잉",
+      "vote": 0,
+      "answer": 0,
+      "views": 141,
+      "username": "leekoby",
+      "createAt": "2022-04-05-11:59",
+      "tag": [
+        "algorism",
+        "NAVER"
+      ]
     },
     {
       "id": 2,
-      "vote": 3,
-      "views": 22,
-      "title": "Python Pandas에서 두 DataFrame 사이의 공통 열 유지",
-      "body": "두 개의 DataFrame이 있습니다. 두 DataFrame 모두 공통 열이 있고, 이 열을 기준으로 두 DataFrame을 병합하려고 합니다. 결과로 도출된 병합 DataFrame에서는 공통 열을 유지하고, 다른 열을 모두 제거해야 합니다. Pandas에서 이 작업을 어떻게 수행할 수 있나요?",
-      "tag": ["python", "pandas", "dataframe", "merge"],
-      "author": {
-        "name": "Sam",
-        "answered": 301,
-        "avatar": "Img"
-      },
-      "time": "2023-04-20T02:15:00.000Z",
-      "content": [
-        "두 개의 DataFrame이 있습니다.",
-        "두 DataFrame 모두 공통 열이 있고, 이 열을 기준으로 두 DataFrame을 병합하려고 합니다.",
-        "결과로 도출된 병합 DataFrame에서는 공통 열을 유지하고, 다른 열을 모두 제거해야 합니다.",
-        "Pandas에서 이 작업을 어떻게 수행할 수 있나요?",
-        "두 DataFrame을 작성하고 공통 열을 기준으로 병합하는 코드 예제를 첨부합니다."
-      ],
-      "answer": "dummyAnswerData"
+      "title": "eslint가 안되요 ㅠㅠㅠ",
+      "content": "화살표함수가 안되요..화살표함수가 안되요..화살표함수가 안되요..화살표함수가 안되요..화살표함수가 안되요..화살표함수가 안되요..",
+      "vote": 0,
+      "answer": 0,
+      "views": 411,
+      "username": "mongzii",
+      "createAt": "2023-02-05-11:59",
+      "tag": [
+        "eslint",
+        "arrowFunction"
+      ]
     },
     {
       "id": 3,
-      "vote": 2,
-      "views": 15,
-      "title": "Node.js에서 동적으로 import 및 export 구문 사용해 모듈 불러오기",
-      "body": "Node.js에서 동적으로 import 및 export 구문을 사용하여 모듈을 불러오고 싶습니다. 즉, 애플리케이션 실행 시 모듈 이름을 변경해야 합니다. 이 작업을 어떻게 수행할 수 있나요? 예제 코드가 있다면 알려주세요.",
-      "tag": ["node.js", "javascript", "import", "export"],
-      "author": {
-        "name": "John",
-        "answered": 189,
-        "avatar": "Img"
-      },
-      "time": "2023-04-20T03:45:00.000Z",
-      "content": [
-        "Node.js에서 동적으로 import 및 export 구문을 사용하여 모듈을 불러오고 싶습니다.",
-        "즉, 애플리케이션 실행 시 모듈 이름을 변경해야 합니다.",
-        "이 작업을 어떻게 수행할 수 있나요?",
-        "예제 코드가 있다면 알려주세요."
+      "title": "전 많은거 안바라고.. 집앞에 회사 아무곳이나 가고싶어요?",
+      "content": "어디사냐구요? 성남살아요. 네이버,카카오,라인,쿠팡,배달의민족,당근마켓,토스,몰로코,두나무,샌드박스 let's go!",
+      "vote": 0,
+      "answer": 0,
+      "views": 11,
+      "username": "sineTlsl",
+      "createAt": "2023-03-05-01:59",
+      "tag": [
+        "취직",
+        "취뽀"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "대용량 대파 첵스초코 사도 될까요??",
+      "content": "하루라도 대파 첵스초코를 먹지 않으면 입에 가시가 돋아요...하루라도 대파 첵스초코를 먹지 않으면 입에 가시가 돋아요...하루라도 대파 첵스초코를 먹지 않으면 입에 가시가 돋아요",
+      "vote": 3,
+      "answer": 0,
+      "views": 41,
+      "username": "rsuubinn",
+      "createAt": "2023-04-05-11:59",
+      "tag": [
+        "react",
+        "recoil"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "저 그런사람 맞는데요??",
+      "content": "저 그런사람 맞습니다. 앞으로 그런사람으로 불러주세요. 저는 사람을 찌르고 도망갔습니다. 죄송합니다.",
+      "vote": 0,
+      "answer": 0,
+      "views": 141,
+      "username": "1-blue",
+      "createAt": "2022-04-05-11:59",
+      "tag": [
+        "algorism",
+        "NAVER"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "eslint가 안되요 ㅠㅠㅠ",
+      "content": "화살표함수가 안되요..화살표함수가 안되요..화살표함수가 안되요..화살표함수가 안되요..화살표함수가 안되요..화살표함수가 안되요..",
+      "vote": 0,
+      "answer": 0,
+      "views": 411,
+      "username": "mongzii",
+      "createAt": "2023-02-05-11:59",
+      "tag": [
+        "eslint",
+        "arrowFunction"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "전 많은거 안바라고.. 집앞에 회사 아무곳이나 가고싶어요?",
+      "content": "어디사냐구요? 성남살아요. 네이버,카카오,라인,쿠팡,배달의민족,당근마켓,토스,몰로코,두나무,샌드박스 let's go!",
+      "vote": 0,
+      "answer": 0,
+      "views": 11,
+      "username": "sineTlsl",
+      "createAt": "2023-03-05-01:59",
+      "tag": [
+        "취직",
+        "취뽀"
+      ]
+    },
+    {
+      "title": " specific and imagine y specific and imagine y specific and imagine y specific and imagine y",
+      "content": "<p><span style=\"color: rgb(59, 64, 69);\">&nbsp;specific and imagine y&nbsp;specific and imagine y&nbsp;specific and imagine y</span></p><p><br></p><p><span style=\"color: rgb(59, 64, 69);\">&nbsp;specific and imagine y&nbsp;specific and imagine y&nbsp;specific and imagine y</span></p>",
+      "text": " specific and imagine y specific and imagine y specific and imagine y\n\n specific and imagine y specific and imagine y specific and imagine y\n",
+      "tags": [
+        " specific and imagine y"
       ],
-      "answer": "dummyAnswerData"
+      "vote": 0,
+      "answer": 0,
+      "views": 0,
+      "createAt": "2023. 4. 25. 오전 2:52:52",
+      "id": 8
+    },
+    {
+      "title": "ㄷㅈㅅㄷㅈㅅㄷㅈㅅ specific and imagine y",
+      "content": "<p><span style=\"color: rgb(59, 64, 69);\">&nbsp;specific and imagine y&nbsp;specific and imagine y&nbsp;specific and imagine y&nbsp;specific and imagine y&nbsp;specific and imagine y</span></p><p><br></p><p><span style=\"color: rgb(59, 64, 69);\">&nbsp;specific and imagine y&nbsp;specific and imagine y&nbsp;specific and imagine y&nbsp;specific and imagine y&nbsp;specific and imagine y&nbsp;specific and imagine y</span></p>",
+      "text": " specific and imagine y specific and imagine y specific and imagine y specific and imagine y specific and imagine y\n\n specific and imagine y specific and imagine y specific and imagine y specific and imagine y specific and imagine y specific and imagine y\n",
+      "tags": [
+        "tag1",
+        "tag2]",
+        "tag3",
+        "tag4",
+        "tag65"
+      ],
+      "vote": 0,
+      "answer": 0,
+      "views": 0,
+      "createAt": "2023. 4. 25. 오전 2:56:36",
+      "id": 9
     }
   ]
 }
