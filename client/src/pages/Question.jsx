@@ -7,7 +7,7 @@ import { EditorContainer } from "../share/EditorContainer";
 import ReactQuill from "react-quill";
 import { editorModules } from "../share/EditorContainer";
 import "react-quill/dist/quill.snow.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -196,10 +196,13 @@ const MidContainerleft = styled.div`
   justify-content: space-between;
   > button {
     cursor: pointer;
-    color: #6b6a6a;
     background-color: rgb(255, 255, 255);
-    &:hover {
-      color: #b1b1b1;
+    > a {
+      text-decoration: none;
+      color: #6b6a6a;
+      &:hover {
+        color: #b1b1b1;
+      }
     }
   }
 `;
@@ -478,7 +481,7 @@ export default function Question() {
                   <Contentcontainer>
                     <p>{location.state.content}</p>
                     <ul>
-                      {location.state.tag.map((el, idx) => {
+                      {location.state.tags.map((el, idx) => {
                         return (
                           <li key={idx}>
                             <span>{el}</span>
@@ -488,9 +491,9 @@ export default function Question() {
                     </ul>
                     <ContentmidContainer>
                       <MidContainerleft>
-                        <button>Share</button>
-                        <button>Edit</button>
-                        <button>Follow</button>
+                        <button>
+                          <Link to="/">Edit</Link>
+                        </button>
                       </MidContainerleft>
                       <MidContainerRight>
                         <div>asked {location.state.createAt}</div>
@@ -523,7 +526,7 @@ export default function Question() {
                 </Questioncontainer>
                 <AnswerArticle>
                   <AnswerCount>
-                    <h2>{location.state.answer} Answers</h2>
+                    <h2>{answer.length} Answers</h2>
                     <div>
                       <label htmlFor="answer-sort-method-select">
                         Sorted by
@@ -585,9 +588,9 @@ export default function Question() {
                         <p>{location.state.content}</p>
                         <ContentmidContainer>
                           <MidContainerleft>
-                            <button>Share</button>
-                            <button>Edit</button>
-                            <button>Follow</button>
+                            <button>
+                              <Link to="/">Edit</Link>
+                            </button>
                           </MidContainerleft>
                           <MidContainerRight>
                             <div>answered {location.state.createAt}</div>

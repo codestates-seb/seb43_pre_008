@@ -149,7 +149,7 @@ export default function Questionlist({ el }) {
               createAt: el.createAt,
               username: el.username,
               views: el.views,
-              tag: el.tag,
+              tags: el.tags,
               vote: el.vote,
             }}
           >
@@ -162,12 +162,13 @@ export default function Questionlist({ el }) {
             <QuestionContents>
               <TagContainer>
                 <ul>
-                  <li>
-                    <span>{el.tag[0]}</span>
-                  </li>
-                  <li>
-                    <span>{el.tag[1]}</span>
-                  </li>
+                  {el.tags.map((list, idx) => {
+                    return (
+                      <li key={idx}>
+                        <span>{list}</span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </TagContainer>
             </QuestionContents>
