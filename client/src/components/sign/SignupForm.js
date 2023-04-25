@@ -1,13 +1,12 @@
 import styled from "styled-components";
-import SignupButton from "./SignupButton";
+import SignupButton from "../SignupButton";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-/** 2023/04/23 닉네임 입력 버튼 - by 이진하*/
+
 const DisplayNameInput = styled.input.attrs({
   type: "text",
 })`
-  border: 1px solid hsl(210, 8%, 85%);
-  display: flex;
+  display: inline-block;
   padding: 7px 9px;
   width: 100%;
   text-align: start;
@@ -18,16 +17,9 @@ const DisplayNameInput = styled.input.attrs({
     "Liberation Sans", sans-serif;
   box-shadow: none;
   border-radius: 3px;
-
-  &:focus {
-    outline: none;
-    border-color: hsl(210, 50%, 50%);
-    box-shadow: 0 0 0 2px hsl(210, 50%, 50%);
-  }
 `;
-/** 2023/04/23 닉네임 라벨 - by 이진하*/
 const DisplayNameLabel = styled.label`
-  display: flex;
+  display: inline-block;
   padding: 0 2px;
   text-align: left;
   font-size: 15px;
@@ -38,12 +30,10 @@ const DisplayNameLabel = styled.label`
   font-weight: bold;
   vertical-align: bottom;
 `;
-/** 2023/04/23 이메일 입력 버튼 - by 이진하*/
 const EmailInput = styled.input.attrs({
   type: "text",
 })`
-  border: 1px solid hsl(210, 8%, 85%);
-  display: flex;
+  display: inline-block;
   padding: 7px 9px;
   width: 100%;
   text-align: start;
@@ -54,16 +44,9 @@ const EmailInput = styled.input.attrs({
     "Liberation Sans", sans-serif;
   box-shadow: none;
   border-radius: 3px;
-
-  &:focus {
-    outline: none;
-    border-color: hsl(210, 50%, 50%);
-    box-shadow: 0 0 0 2px hsl(210, 50%, 50%);
-  }
 `;
-/** 2023/04/23 이메일 라벨 - by 이진하*/
 const EmailLabel = styled.label`
-  display: flex;
+  display: inline-block;
   padding: 0 2px;
   text-align: left;
   font-size: 15px;
@@ -74,9 +57,9 @@ const EmailLabel = styled.label`
   font-weight: bold;
   vertical-align: bottom;
 `;
-/** 2023/04/23 패스워드 라벨 - by 이진하*/
+
 const PasswordLabel = styled.label`
-  display: flex;
+  display: inline-block;
   padding: 0 2px;
   text-align: left;
   font-size: 15px;
@@ -90,8 +73,7 @@ const PasswordLabel = styled.label`
 const PasswordInput = styled.input.attrs({
   type: "password",
 })`
-  border: 1px solid hsl(210, 8%, 85%);
-  display: flex;
+  display: inline-block;
   padding: 7px 9px;
   width: 100%;
   text-align: start;
@@ -103,31 +85,25 @@ const PasswordInput = styled.input.attrs({
   box-shadow: none;
   border-radius: 3px;
   margin-bottom: 10px;
-
-  &:focus {
-    outline: none;
-    border-color: hsl(210, 50%, 50%);
-    box-shadow: 0 0 0 2px hsl(210, 50%, 50%);
-  }
 `;
-/** 2023/04/23 회원가입 폼 - by 이진하*/
+
 const Sign = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
-/** 2023/04/23 상세설명 - by 이진하*/
+
 const Msgdiv = styled.div`
   font-size: 12px;
   margin-top: 10px;
 `;
-/** 2023/04/23 링크 - by 이진하*/
+
 const LinkSpan = styled.span`
   color: #0074ce;
   cursor: pointer;
 `;
-/** 2023/04/23 컨텐츠 - by 이진하*/
+
 const ContentDiv = styled.div`
   margin: 6px 0;
   width: 100%;
@@ -156,13 +132,15 @@ const SignupForm = ({
     };
 
     axios
-      .post("http://localhost:4000/api/signup", JSON.stringify(reqbody), {
-        headers,
-      })
+      .post(
+        "http://ec2-3-36-23-23.ap-northeast-2.compute.amazonaws.com:8080/members/signup",
+        JSON.stringify(reqbody),
+        { headers },
+      )
       .then((res) => {
         console.error(res);
         window.alert("회원가입 성공 !");
-        navigate("../../pages/Signgin");
+        navigate("../users/login");
       })
       .catch((err) => {
         console.log(err);
@@ -171,11 +149,9 @@ const SignupForm = ({
   return (
     <Sign onSubmit={(e) => handleSignupButton(e)}>
       <ContentDiv>
-        <div>
-          <DisplayNameLabel htmlFor="displayNameInput">
-            Display name
-          </DisplayNameLabel>
-        </div>
+        <DisplayNameLabel htmlFor="displayNameInput">
+          Display name
+        </DisplayNameLabel>
         <DisplayNameInput
           id="displayNameInput"
           onChange={(e) => setDisplayName(e.target.value)}
@@ -183,15 +159,11 @@ const SignupForm = ({
         />
       </ContentDiv>
       <ContentDiv>
-        <div>
-          <EmailLabel>Email</EmailLabel>
-        </div>
+        <EmailLabel>Email</EmailLabel>
         <EmailInput onChange={(e) => setSignupEmail(e.target.value)} required />
       </ContentDiv>
       <ContentDiv>
-        <div>
-          <PasswordLabel>Password</PasswordLabel>
-        </div>
+        <PasswordLabel>Password</PasswordLabel>
         <PasswordInput
           onChange={(e) => setSignupPassword(e.target.value)}
           required

@@ -5,7 +5,7 @@ import logo_stack from "../img/logo_stack.svg";
 import copyButton from "../img/copyButton.svg";
 import Header from "../share/Header";
 import { Link } from "react-router-dom";
-
+/** 2023/04/23 로그인 페이지 폼 - by 이진하*/
 const Page = styled.div`
   width: 100vw;
   height: 100vh;
@@ -15,6 +15,7 @@ const Page = styled.div`
   justify-content: center;
   align-items: center;
 `;
+/** 2023/04/23 닉네임 입력 버튼 - by 이진하*/
 const LoginWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -27,6 +28,7 @@ const ButtonWrapper = styled.div`
   width: 100%;
   margin-bottom: 16px;
 `;
+
 const Logowrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -37,6 +39,7 @@ const Logowrapper = styled.div`
     height: 37px;
   }
 `;
+
 const FormWrapper = styled.div`
   width: 100%;
   margin-bottom: 24px;
@@ -46,12 +49,14 @@ const FormWrapper = styled.div`
   box-shadow: rgba(0, 0, 0, 0.05) 0px 10px 24px 0px,
     rgba(0, 0, 0, 0.05) 0px 20px 48px 0px, rgba(0, 0, 0, 0.1) 0px 1px 4px 0px;
 `;
+
 const RedirectionDiv1 = styled.div`
   padding: 16px;
   margin-bottom: 24px;
   font-size: 13px;
   text-align: center;
 `;
+
 const RedirectionLink = styled(Link).attrs()`
   text-align: center;
   color: #0074cc;
@@ -63,6 +68,7 @@ const RedirectionLink = styled(Link).attrs()`
     color: #0074cc;
   }
 `;
+
 const RedirectionDiv2 = styled.div`
   margin-top: 12px;
   font-size: 13px;
@@ -105,7 +111,7 @@ const Signin = () => {
           </FormWrapper>
           <RedirectionDiv1>
             Don't have an account?{" "}
-            <RedirectionLink to="../signup">Sign up</RedirectionLink>
+            <RedirectionLink to="../Signup">Sign up</RedirectionLink>
             <RedirectionDiv2>
               Are you an empolyer?{" "}
               <a href="/">

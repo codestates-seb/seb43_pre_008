@@ -5,7 +5,7 @@ import LoginButton from "./LoginButtons";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+/** 2023/04/23 로그인 인풋 폼 - by 이진하*/
 const LoginInputForm = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -26,11 +26,7 @@ const LoginInputForm = () => {
     });
 
     axios
-      .post(
-        "http://ec2-3-36-23-23.ap-northeast-2.compute.amazonaws.com:8080/auth/login",
-        reqbody,
-        header,
-      )
+      .post("http://localhost:4000/api/login", reqbody, header)
       .then((res) => {
         window.alert(`${res.data.username}로 로그인 하셨습니다.`);
         localStorage.setItem("token", JSON.stringify(res.headers));
@@ -58,7 +54,7 @@ const LoginInputForm = () => {
     </LoginForm>
   );
 };
-
+/** 2023/04/23 로그인 폼 - by 이진하*/
 const LoginForm = styled.form`
   display: flex;
   flex-direction: column;

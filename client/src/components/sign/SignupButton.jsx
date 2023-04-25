@@ -2,7 +2,7 @@ import styled from "styled-components";
 import logo_github from "../../img/logo_github.svg";
 import logo_google from "../../img/logo_google.svg";
 import logo_facebook from "../../img/logo_facebook.svg";
-
+/** 2023/04/23 소셜 회원가입 버튼 - by 이진하*/
 const SignupButton = ({ type }) => {
   if (type === "google") {
     return (
@@ -32,7 +32,7 @@ const SignupButton = ({ type }) => {
     return <BlueButton>Sign up</BlueButton>;
   }
 };
-
+/** 2023/04/23 소셜 회원가입 버튼 - by 이진하*/
 const SocialSignUpButton = styled.button`
   display: inline-block;
   display: flex;
@@ -62,21 +62,21 @@ const SocialSignUpButton = styled.button`
     opacity: 0.8;
   }
 `;
-
+/** 2023/04/23 깃 소셜 회원가입 버튼 - by 이진하*/
 const GitSignup = styled(SocialSignUpButton)`
   background-color: #232629;
   color: white;
   outline: none;
-`;
+`; /** 2023/04/23 구글 소셜 회원가입 버튼 - by 이진하*/
 const GoogleSignup = styled(SocialSignUpButton)`
   background-color: #ffffff;
   outline: none;
-`;
+`; /** 2023/04/23 페이스북 소셜 회원가입 버튼 - by 이진하*/
 const FacebookSignup = styled(SocialSignUpButton)`
   background-color: #385499;
   color: white;
   outline: none;
-`;
+`; /** 2023/04/23 블루 회원가입 버튼 - by 이진하*/
 const BlueButton = styled.button`
   display: inline-block;
   width: 100%;
