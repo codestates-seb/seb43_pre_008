@@ -49,13 +49,6 @@ export const InputSec = styled.section`
     margin-bottom: 15px;
     color: #3b4045;
   }
-  .quill {
-    height: 232px;
-    border: 3px;
-    .ql-container {
-      height: 191.06px;
-    }
-  }
 `;
 /** 23/4/21 작성내용의 input  */
 export const InputText = styled.input`

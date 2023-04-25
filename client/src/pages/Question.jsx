@@ -3,8 +3,13 @@ import Sidebar from "../share/Sidebar";
 import Footer from "../share/Footer";
 import styled from "styled-components";
 import Nav from "../share/Nav";
+import { EditorContainer } from "../share/EditorContainer";
+import ReactQuill from "react-quill";
+import { editorModules } from "../share/EditorContainer";
+import "react-quill/dist/quill.snow.css";
 import { useLocation, useNavigate } from "react-router-dom";
-//import { useState, useEffect } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 /** 2023/04/18 - 전체 영역 컴포넌트 - by 박수범 */
 const LayoutArea = styled.div`
@@ -305,6 +310,25 @@ const AnswerInputContainer = styled.div`
     font-size: 19px;
     margin: 20px 0px;
   }
+  > .postbtn-container {
+    margin-top: 10px;
+    text-align: left;
+    > button {
+      background-color: rgb(10, 149, 255);
+      color: rgb(255, 255, 255);
+      border: 1px solid rgb(204, 204, 204);
+      padding: 10.4px;
+      border-radius: 3px;
+      width: 128px;
+      height: 38px;
+      cursor: pointer;
+      font-size: 13px;
+      box-shadow: rgba(255, 255, 255, 0.4) 0px 1px 0px;
+      &:hover {
+        background-color: rgb(0, 105, 193);
+      }
+    }
+  }
 `;
 /** 2023/04/22 - 답변 인풋폼 - by 박수범 */
 const AnswerInputForm = styled.div`
@@ -312,19 +336,72 @@ const AnswerInputForm = styled.div`
   margin-bottom: 5px;
 `;
 
+const AnswerContant = styled.div`
+  display: flex;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgb(222, 226, 229);
+`;
+
 export default function Question() {
+  const [answer, setAnswer] = useState("");
+  const [answerBody, setAnswerBody] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location.state);
+  const token = `abcdedrdrqw`;
+  console.log(answerBody, answer);
+
+  const postAnswer = async (body, token) => {
+    //json 형태로 body 받아옴
+    axios
+      .post(`${URL}/questions/${location.state.id}/answer`, body, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        },
+      })
+      .then((res) => {
+        alert(res.data);
+      });
+  };
+
+  const getAnswer = () => {
+    //json 형태로 body 받아옴
+    axios
+      .get(`${URL}/questions/${location.state.id}/answers?page=1&size=10`, {
+        page: 1,
+        size: 10,
+      })
+      .then((res) => {
+        setAnswer(res.data);
+      });
+  };
+
+  useEffect(() => {
+    getAnswer();
+  }, []);
+
+  const postBody = JSON.stringify({
+    content: `${answerBody}`,
+    createdAt: new Date(),
+    membetID: 1234,
+  });
 
   /** 2023/04/18 - Ask 버튼 클릭 시 질문작성페이지로 이동하는 함수 - by 박수범 */
   const AskBtnHandler = () => {
     navigate("/ask");
   };
 
-  /** 2023/04/22 - Ask 버튼 클릭 시 질문작성페이지로 이동하는 함수 - by 박수범 */
+  /** 2023/04/22 -Add코멘트 클릭 시 로그인 페이지로 이동하는 함수 - by 박수범 */
   const AddCommentBtn = () => {
     navigate("/signin");
+  };
+
+  const PostAnswertBtn = () => {
+    postAnswer(postBody, token);
+  };
+
+  const AnswerHandler = (editor) => {
+    setAnswerBody(editor);
   };
 
   return (
@@ -457,9 +534,109 @@ export default function Question() {
                       </select>
                     </div>
                   </AnswerCount>
+                  {!answer.length === 0 ? null : (
+                    <Questioncontainer>
+                      <Votecontainer>
+                        <button>
+                          <svg
+                            aria-hidden="true"
+                            className="svg-icon iconArrowUpLg"
+                            width="36"
+                            height="36"
+                            viewBox="0 0 36 36"
+                            fill="#B1B7BC"
+                          >
+                            <path d="M2 25h32L18 9 2 25Z"></path>
+                          </svg>
+                        </button>
+                        <div className="VoteText">
+                          This question shows research effort; it is useful and
+                          clear
+                        </div>
+                        <div>{location.state.vote}</div>
+                        <button>
+                          <svg
+                            aria-hidden="true"
+                            className="svg-icon iconArrowDownLg"
+                            width="36"
+                            height="36"
+                            viewBox="0 0 36 36"
+                            fill="#B1B7BC"
+                          >
+                            <path d="M2 11h32L18 27 2 11Z"></path>
+                          </svg>
+                        </button>
+                        <div className="VoteText">
+                          This question shows research effort; it is useful and
+                          clear
+                        </div>
+                        <svg
+                          aria-hidden="true"
+                          className="js-saves-btn-unselected svg-icon iconBookmarkAlt"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 18 18"
+                          fill="#B1B7BC"
+                        >
+                          <path d="m9 10.6 4 2.66V3H5v10.26l4-2.66ZM3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path>
+                        </svg>
+                      </Votecontainer>
+                      <Contentcontainer>
+                        <p>{location.state.content}</p>
+                        <ContentmidContainer>
+                          <MidContainerleft>
+                            <button>Share</button>
+                            <button>Edit</button>
+                            <button>Follow</button>
+                          </MidContainerleft>
+                          <MidContainerRight>
+                            <div>answered {location.state.createAt}</div>
+                            <p>
+                              <img
+                                src="https://www.gravatar.com/avatar/73a947b04ec422b1677d20933ab4fe1e?s=64&amp;d=identicon&amp;r=PG&amp;f=1"
+                                alt="Tom Bom's user avatar"
+                              ></img>
+                              <div>
+                                <a href="/mypage">{location.state.username}</a>
+                              </div>
+                            </p>
+                          </MidContainerRight>
+                        </ContentmidContainer>
+                        <ContentbottomContainer>
+                          <BottomContainerTop>
+                            <p>I have the same question!</p>
+                            <div>
+                              <span className="name">
+                                {location.state.username}
+                              </span>
+                              <span className="createAt">
+                                {location.state.createAt}
+                              </span>
+                            </div>
+                          </BottomContainerTop>
+                          <button onClick={AddCommentBtn}>Add a comment</button>
+                        </ContentbottomContainer>
+                      </Contentcontainer>
+                    </Questioncontainer>
+                  )}
                   <AnswerInputContainer>
                     <h2>Your Answer</h2>
-                    <AnswerInputForm>{/* sd */}</AnswerInputForm>
+                    <AnswerContant></AnswerContant>
+                    <AnswerInputForm>
+                      <EditorContainer>
+                        <ReactQuill
+                          height="200px"
+                          theme="snow"
+                          modules={editorModules}
+                          onChange={(content, delta, source, editor) =>
+                            AnswerHandler(editor.getHTML())
+                          }
+                        />
+                      </EditorContainer>
+                    </AnswerInputForm>
+                    <div className="postbtn-container">
+                      <button onClick={PostAnswertBtn}>Post Your Answer</button>
+                    </div>
                   </AnswerInputContainer>
                 </AnswerArticle>
               </ContentsArticle>
