@@ -404,7 +404,7 @@ export default function Question() {
       {
         id: location.state.id,
         answer: location.state.answer,
-        content: answerBody,
+        content: answerBody.replace(/(<([^>]+)>)/gi, ""),
         createAt: location.state.createAt,
         username: location.state.username,
         views: location.state.views,
