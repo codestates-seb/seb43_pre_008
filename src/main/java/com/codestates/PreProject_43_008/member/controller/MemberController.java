@@ -46,7 +46,7 @@ public class MemberController {
 
         return ResponseEntity.ok(new MemberDto.LoginResponse(jwt, userDetails.getUsername()));
     }
-    @GetMapping("/members")
+    @GetMapping("/users")
     public ResponseEntity<List<MemberDto.Response>> getAllMembers() {
         return ResponseEntity.ok(memberService.getAllMembers());
     }
