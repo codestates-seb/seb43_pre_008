@@ -40,7 +40,7 @@ app.post("/api/login", (req, res) => {
   const token = jwt.sign(payload, secretKey, options);
   // 응답
   res.header("Authorization", `Bearer ${token}`);
-  res.json({ message: "로그인에 성공했습니다." });
+  res.json({ message: "로그인에 성공했습니다.", email });
 });
 
 app.post("/api/signup", (req, res) => {
