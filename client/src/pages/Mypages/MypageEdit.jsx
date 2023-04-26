@@ -8,6 +8,9 @@ import MyPage_menu from "../../components/mypage/MyPage_menu";
 import Mypage_setNav from "../../components/mypage/Mypage_setNav";
 import ProfileImage from "../../img/profile_img.png";
 import WmdBurtton from "../../img/wmd-buttons.svg";
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { saveData } from "../../features/mypage/userDataSlice";
 /** 2024/4/19 전체영역(메인 Nav + 컨텐츠) 컴포넌트 -by 고정윤 */
 const MainDiv = styled.div`
   display: flex;
@@ -240,8 +243,57 @@ const CancelBtn = styled(SubmitBtn)`
 `;
 
 const EditProfile = () => {
-  const [displayName, setDisplayName] = useState("사용자이름");
+  const dispatch = useDispatch();
+  const userDataState = useSelector((state) => state.userData);
+  const [displayName, setDisplayName] = useState(userDataState.displayName);
+  // const [password, setPassword] = useState(null);
+  const [location, setLocation] = useState(null);
+  const [title, setTitle] = useState(null);
+  const state = useSelector((state) => state.log);
+  if (
+    !(
+      state.value === 1 ||
+      state.value === "1" ||
+      state.value === 0 ||
+      state.value === "0"
+    )
+  ) {
+    window.location.reload();
+  }
+  const submitHandler = () => {
+    const accessToken = localStorage.getItem("Authorization");
+    const editData = {};
+    // If no displayName or password data is entered, do not include it in the editData object
+    if (displayName) {
+      editData.displayName = displayName;
+    } else if (location) {
+      editData.location = location;
+    } else if (title) {
+      editData.title = title;
+    }
+    // else if (password) {
+    //       editData.password = password;
+    //     }
 
+    axios
+      .patch(`http://localhost:4000/user/${userDataState.memberId}`, editData, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: accessToken,
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          dispatch(saveData(res.data.data));
+          alert("Your member information has been changed");
+          window.location.reload("/mypage/useredit");
+        } else {
+          alert("Failed to change member information");
+        }
+      })
+      .catch(() => alert("An error occurred"));
+  };
   return (
     <React.Fragment>
       <Header />
@@ -284,16 +336,14 @@ const EditProfile = () => {
                     <ListCompoDiv>
                       <Label>
                         <ListCompoTitle>Location</ListCompoTitle>
-                        <input
-                          onChange={(e) => setDisplayName(e.target.value)}
-                        />
+                        <input onChange={(e) => setLocation(e.target.value)} />
                       </Label>
                     </ListCompoDiv>
                     <ListCompoDiv>
                       <Label>
                         <ListCompoTitle>Title</ListCompoTitle>
                         <input
-                          onChange={(e) => setDisplayName(e.target.value)}
+                          onChange={(e) => setTitle(e.target.value)}
                           placeholder="No title has been set"
                         />
                       </Label>
@@ -536,12 +586,8 @@ const EditProfile = () => {
                 </SubTitle>
 
                 <BtnDiv>
-                  <SubmitBtn onClick={(e) => setDisplayName(e.target.value)}>
-                    Save Profile
-                  </SubmitBtn>
-                  <CancelBtn onClick={(e) => setDisplayName(e.target.value)}>
-                    Cancel
-                  </CancelBtn>
+                  <SubmitBtn onClick={submitHandler}>Save Profile</SubmitBtn>
+                  <CancelBtn>Cancel</CancelBtn>
                 </BtnDiv>
               </Main>
             </MainContainer>
