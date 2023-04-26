@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+/** 2023/04/23 이메일 로그인 - by 이진하*/
 const EmailForm = ({ loginEmail, setLoginEmail }) => {
   return (
     <EmailBlock>
@@ -15,13 +15,13 @@ const EmailForm = ({ loginEmail, setLoginEmail }) => {
     </EmailBlock>
   );
 };
-
+/** 2023/04/23 이메일 로그인 블록 - by 이진하*/
 const EmailBlock = styled.div`
   margin: 0;
   border: 0;
   width: 100%;
 `;
-
+/** 2023/04/23 이메일 라벨 - by 이진하*/
 const EmailLabel = styled.label`
   display: flex;
   margin: 2px 0;
@@ -36,7 +36,7 @@ const EmailLabel = styled.label`
     "Liberation Sans", sans-serif;
   align-self: flex-start;
 `;
-
+/** 2023/04/23 이메일 입력 - by 이진하*/
 const EmailInput = styled.input.attrs({
   type: "text",
 })`
