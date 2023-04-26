@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    각자 PC에 만들어놓은 Database이름을 써야 합니다.
+    url: jdbc:mysql://localhost:3306/dbformember?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    #    mysql에 생성한 사용자 계정 정보를 써야 합니다.
+    username: root
+    password: dlrla0413
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+app:
+  jwtSecret: XKjwKO8uVLhoK3MTCAa3qLxcgQVcShtt8RD7utpGJq7WmE80SRwz94WtFvfOZwKh4Ioj7nd4FBqdngLr6tLeqmNuPQoOOm2SHzB5YcmIwmzGB7KHniArWMtqKklK8QD3k0srP0dCJ85ZtsYhJ8QdaOzdIfndwraZMAfHnFes3EY31X0wQgWKfFYUPpKQ4Zhp3froY4Oyl3xkJFiButGdGZpoI3dtlcT7dp0obsurWA13JlN0sXoydTah5Rp8HLb3
+  jwtExpirationMs: 3600000
+  refreshTokenSecret: XKjwKO8uVLhoK3MTCAa3qLxcgQVcShtt8RD7utpGJq7WmE80SRwz94WtFvfOZwKh4Ioj7nd4FBqdngLr6tLeqmNuPQoOOm2SHzB5YcmIwmzGB7KHniArWMtqKklK8QD3k0srP0dCJ85ZtsYhJ8QdaOzdIfndwraZMAfHnFes3EY31X0wQgWKfFYUPpKQ4Zhp3froY4Oyl3xkJFiButGdGZpoI3dtlcT7dp0obsurWA13JlN0sXoydTah5Rp8HLb3
+  refreshTokenExpirationMs: 3600000
