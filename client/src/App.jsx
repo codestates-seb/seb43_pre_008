@@ -6,6 +6,7 @@ import Mypage from "./pages/Mypages/Mypage";
 import Ask from "./pages/Ask";
 import QuestionSearch from "./pages/QuestionSearch";
 import Question from "./pages/Question";
+import ModifyQuestion from "./pages/ModifyQuestion";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import MypageSetting from "./pages/Mypages/MypageSetting";
@@ -53,6 +54,10 @@ function App() {
               }
             />
             <Route path="/question/:questionId" element={<Question />} />
+            <Route
+              path="/question/:questionId/edit"
+              element={<ModifyQuestion />}
+            />
             <Route path="/question" element={<Question />} />
             <Route path="/signin" element={<Signin />} />
             <Route path="/signup" element={<Signup />} />

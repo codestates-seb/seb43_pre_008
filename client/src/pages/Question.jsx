@@ -346,14 +346,13 @@ const AnswerContant = styled.div`
 `;
 
 export default function Question() {
-  const [answer, setAnswer] = useState("");
   const [answerBody, setAnswerBody] = useState("");
   const location = useLocation();
+  const [answer, setAnswer] = useState([]);
   const navigate = useNavigate();
-  const token = `abcdedrdrqw`;
-  console.log(answerBody, answer);
+  console.log(answer);
 
-  const postAnswer = async (body, token) => {
+  /*const postAnswer = async (body, token) => {
     //json 형태로 body 받아옴
     axios
       .post(`${URL}/questions/${location.state.id}/answer`, body, {
@@ -365,7 +364,7 @@ export default function Question() {
       .then((res) => {
         alert(res.data);
       });
-  };
+  };*/
 
   const getAnswer = () => {
     //json 형태로 body 받아옴
@@ -383,11 +382,11 @@ export default function Question() {
     getAnswer();
   }, []);
 
-  const postBody = JSON.stringify({
+  /*const postBody = JSON.stringify({
     content: `${answerBody}`,
     createdAt: new Date(),
     membetID: 1234,
-  });
+  });*/
 
   /** 2023/04/18 - Ask 버튼 클릭 시 질문작성페이지로 이동하는 함수 - by 박수범 */
   const AskBtnHandler = () => {
@@ -400,7 +399,19 @@ export default function Question() {
   };
 
   const PostAnswertBtn = () => {
-    postAnswer(postBody, token);
+    setAnswer([
+      ...answer,
+      {
+        id: location.state.id,
+        answer: location.state.answer,
+        content: answerBody,
+        createAt: location.state.createAt,
+        username: location.state.username,
+        views: location.state.views,
+        tags: location.state.tags,
+        vote: location.state.vote,
+      },
+    ]);
   };
 
   const AnswerHandler = (editor) => {
@@ -492,18 +503,33 @@ export default function Question() {
                     <ContentmidContainer>
                       <MidContainerleft>
                         <button>
-                          <Link to="/">Edit</Link>
+                          <Link
+                            to={`/question/${location.state.id}/edit`}
+                            state={{
+                              id: location.state.id,
+                              title: location.state.title,
+                              answer: location.state.answer,
+                              content: location.state.content,
+                              createAt: location.state.createAt,
+                              username: location.state.username,
+                              views: location.state.views,
+                              tags: location.state.tags,
+                              vote: location.state.vote,
+                            }}
+                          >
+                            Edit
+                          </Link>
                         </button>
                       </MidContainerleft>
                       <MidContainerRight>
-                        <div>asked {location.state.createAt}</div>
+                        <div>asked {answer.createAt}</div>
                         <p>
                           <img
                             src="https://www.gravatar.com/avatar/73a947b04ec422b1677d20933ab4fe1e?s=64&amp;d=identicon&amp;r=PG&amp;f=1"
                             alt="Tom Bom's user avatar"
                           ></img>
                           <div>
-                            <a href="/mypage">{location.state.username}</a>
+                            <a href="/mypage">{answer.username}</a>
                           </div>
                         </p>
                       </MidContainerRight>
@@ -512,12 +538,8 @@ export default function Question() {
                       <BottomContainerTop>
                         <p>I have the same question!</p>
                         <div>
-                          <span className="name">
-                            {location.state.username}
-                          </span>
-                          <span className="createAt">
-                            {location.state.createAt}
-                          </span>
+                          <span className="name">{answer.username}</span>
+                          <span className="createAt">{answer.createAt}</span>
                         </div>
                       </BottomContainerTop>
                       <button onClick={AddCommentBtn}>Add a comment</button>
@@ -537,91 +559,97 @@ export default function Question() {
                       </select>
                     </div>
                   </AnswerCount>
-                  {!answer.length === 0 ? null : (
-                    <Questioncontainer>
-                      <Votecontainer>
-                        <button>
-                          <svg
-                            aria-hidden="true"
-                            className="svg-icon iconArrowUpLg"
-                            width="36"
-                            height="36"
-                            viewBox="0 0 36 36"
-                            fill="#B1B7BC"
-                          >
-                            <path d="M2 25h32L18 9 2 25Z"></path>
-                          </svg>
-                        </button>
-                        <div className="VoteText">
-                          This question shows research effort; it is useful and
-                          clear
-                        </div>
-                        <div>{location.state.vote}</div>
-                        <button>
-                          <svg
-                            aria-hidden="true"
-                            className="svg-icon iconArrowDownLg"
-                            width="36"
-                            height="36"
-                            viewBox="0 0 36 36"
-                            fill="#B1B7BC"
-                          >
-                            <path d="M2 11h32L18 27 2 11Z"></path>
-                          </svg>
-                        </button>
-                        <div className="VoteText">
-                          This question shows research effort; it is useful and
-                          clear
-                        </div>
-                        <svg
-                          aria-hidden="true"
-                          className="js-saves-btn-unselected svg-icon iconBookmarkAlt"
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          fill="#B1B7BC"
-                        >
-                          <path d="m9 10.6 4 2.66V3H5v10.26l4-2.66ZM3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path>
-                        </svg>
-                      </Votecontainer>
-                      <Contentcontainer>
-                        <p>{location.state.content}</p>
-                        <ContentmidContainer>
-                          <MidContainerleft>
-                            <button>
-                              <Link to="/">Edit</Link>
-                            </button>
-                          </MidContainerleft>
-                          <MidContainerRight>
-                            <div>answered {location.state.createAt}</div>
-                            <p>
-                              <img
-                                src="https://www.gravatar.com/avatar/73a947b04ec422b1677d20933ab4fe1e?s=64&amp;d=identicon&amp;r=PG&amp;f=1"
-                                alt="Tom Bom's user avatar"
-                              ></img>
-                              <div>
-                                <a href="/mypage">{location.state.username}</a>
+                  {answer.length === 0
+                    ? null
+                    : answer.map((el, idx) => {
+                        return (
+                          <Questioncontainer key={idx}>
+                            <Votecontainer>
+                              <button>
+                                <svg
+                                  aria-hidden="true"
+                                  className="svg-icon iconArrowUpLg"
+                                  width="36"
+                                  height="36"
+                                  viewBox="0 0 36 36"
+                                  fill="#B1B7BC"
+                                >
+                                  <path d="M2 25h32L18 9 2 25Z"></path>
+                                </svg>
+                              </button>
+                              <div className="VoteText">
+                                This question shows research effort; it is
+                                useful and clear
                               </div>
-                            </p>
-                          </MidContainerRight>
-                        </ContentmidContainer>
-                        <ContentbottomContainer>
-                          <BottomContainerTop>
-                            <p>I have the same question!</p>
-                            <div>
-                              <span className="name">
-                                {location.state.username}
-                              </span>
-                              <span className="createAt">
-                                {location.state.createAt}
-                              </span>
-                            </div>
-                          </BottomContainerTop>
-                          <button onClick={AddCommentBtn}>Add a comment</button>
-                        </ContentbottomContainer>
-                      </Contentcontainer>
-                    </Questioncontainer>
-                  )}
+                              <div>{el.vote}</div>
+                              <button>
+                                <svg
+                                  aria-hidden="true"
+                                  className="svg-icon iconArrowDownLg"
+                                  width="36"
+                                  height="36"
+                                  viewBox="0 0 36 36"
+                                  fill="#B1B7BC"
+                                >
+                                  <path d="M2 11h32L18 27 2 11Z"></path>
+                                </svg>
+                              </button>
+                              <div className="VoteText">
+                                This question shows research effort; it is
+                                useful and clear
+                              </div>
+                              <svg
+                                aria-hidden="true"
+                                className="js-saves-btn-unselected svg-icon iconBookmarkAlt"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 18 18"
+                                fill="#B1B7BC"
+                              >
+                                <path d="m9 10.6 4 2.66V3H5v10.26l4-2.66ZM3 17V3c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v14l-6-4-6 4Z"></path>
+                              </svg>
+                            </Votecontainer>
+                            <Contentcontainer>
+                              <p>{el.content}</p>
+                              <ContentmidContainer>
+                                <MidContainerleft>
+                                  <button>
+                                    <Link to="/">Edit</Link>
+                                  </button>
+                                </MidContainerleft>
+                                <MidContainerRight>
+                                  <div>answered {el.createAt}</div>
+                                  <p>
+                                    <img
+                                      src="https://www.gravatar.com/avatar/73a947b04ec422b1677d20933ab4fe1e?s=64&amp;d=identicon&amp;r=PG&amp;f=1"
+                                      alt="Tom Bom's user avatar"
+                                    ></img>
+                                    <div>
+                                      <a href="/mypage">{el.username}</a>
+                                    </div>
+                                  </p>
+                                </MidContainerRight>
+                              </ContentmidContainer>
+                              <ContentbottomContainer>
+                                <BottomContainerTop>
+                                  <p>I have the same question!</p>
+                                  <div>
+                                    <span className="name">
+                                      {location.state.username}
+                                    </span>
+                                    <span className="createAt">
+                                      {location.state.createAt}
+                                    </span>
+                                  </div>
+                                </BottomContainerTop>
+                                <button onClick={AddCommentBtn}>
+                                  Add a comment
+                                </button>
+                              </ContentbottomContainer>
+                            </Contentcontainer>
+                          </Questioncontainer>
+                        );
+                      })}
                   <AnswerInputContainer>
                     <h2>Your Answer</h2>
                     <AnswerContant></AnswerContant>
