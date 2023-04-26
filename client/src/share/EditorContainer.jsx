@@ -24,6 +24,8 @@ export const EditorContainer = styled.div`
     }
   }
   .quill {
+    height: 232px;
+    border: 3px;
     .ql-toolbar {
       border-radius: 3px 3px 0 0;
       text-align: left;
@@ -58,6 +60,7 @@ export const EditorContainer = styled.div`
       }
     }
     .ql-container {
+      height: 191.06px;
       border-radius: 0 0 3px 3px;
       .ql-editor pre.ql-syntax {
         background-color: #f0f0f0 !important;

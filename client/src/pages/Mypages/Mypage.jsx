@@ -6,6 +6,7 @@ import Footer from "../../share/Footer";
 import MyPage_header from "../../components/mypage/MyPage_header";
 import MyPage_menu from "../../components/mypage/MyPage_menu";
 import MyPage_profile from "../../components/mypage/MyPage_profile";
+
 /** 2024/4/19 마이페이지 Nav와 컨텐츠(좌,우) 감싸는 Div -by 고정윤 */
 const MainDiv = styled.div`
   margin: 0 auto;
@@ -36,11 +37,6 @@ const Section = styled.div`
 `;
 /** 2024/4/19 Mypage 컴포넌트 -by 고정윤 */
 export default function Mypage() {
-  // const [isLoading, setIsLoding] = useState(true);
-
-  // useEffect(() => {
-  //   if (!isLoading) setIsLoding(true);
-  // });
   return (
     <React.Fragment>
       <Header />
