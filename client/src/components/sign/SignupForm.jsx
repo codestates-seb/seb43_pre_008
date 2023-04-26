@@ -162,7 +162,7 @@ const SignupForm = ({
       .then((res) => {
         console.error(res);
         window.alert("회원가입 성공 !");
-        navigate("../../pages/Signgin");
+        navigate("../Signin");
       })
       .catch((err) => {
         console.log(err);
