@@ -7,6 +7,11 @@ import Footer from "../../share/Footer";
 import MyPage_header from "../../components/mypage/MyPage_header";
 import MyPage_menu from "../../components/mypage/MyPage_menu";
 import Mypage_setNav from "../../components/mypage/Mypage_setNav";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteData } from "../../features/mypage/userDataSlice";
+import { logout } from "../../features/mypage/logSlice";
+import axios from "axios";
 /** 2024/4/19 전체영역(메인 Nav + 컨텐츠) 컴포넌트 -by 고정윤 */
 const MainDiv = styled.div`
   display: flex;
@@ -119,14 +124,48 @@ const DeleteBtn = styled.button`
 `;
 /** 2024/4/19 마이페이지 Delete Profile -by 고정윤 */
 const MypageDelete = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const userDataState = useSelector((state) => state.userData);
+  const state = useSelector((state) => state.log);
   const [boxChecked, setBoxChecked] = useState(false);
-
+  let deleteQuery = window.location.search;
+  useEffect(() => {
+    if (deleteQuery === "?delete-agree=on") {
+      alert("회원정보를 삭제하고 로그아웃하였습니다.");
+      navigate("/", { replace: true });
+    }
+  }, [deleteQuery, navigate]);
   const CheckedHandler = () => {
     setBoxChecked(!boxChecked);
   };
 
   const deleteHandler = () => {
-    // 삭제 핸들러
+    const accessToken = localStorage.getItem("Authorization");
+    // const refreshToken = localStorage.getItem('Refresh');
+
+    axios
+      .delete(`http://localhost:4000/users/${userDataState.memberId}`, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: accessToken,
+          // Refresh: refreshToken,
+        },
+      })
+      .then((res) => {
+        if (!res.ok) {
+          alert("Failed to delete member information");
+        } else {
+          let data = res.data;
+          console.log(data);
+          localStorage.removeItem("Authorization");
+          // localStorage.removeItem('Refresh');
+          dispatch(deleteData());
+          dispatch(logout(state));
+        }
+      })
+      .catch(() => alert("An error occurred"));
   };
   return (
     <React.Fragment>
