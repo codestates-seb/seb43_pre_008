@@ -8,10 +8,7 @@ import MyPage_menu from "../../components/mypage/MyPage_menu";
 import Mypage_setNav from "../../components/mypage/Mypage_setNav";
 import ProfileImage from "../../img/profile_img.png";
 import WmdBurtton from "../../img/wmd-buttons.svg";
-import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
-import { saveData } from "../../features/mypage/userDataSlice";
-/** 2024/4/19 전체영역(메인 Nav + 컨텐츠) 컴포넌트 -by 고정윤 */
+
 const MainDiv = styled.div`
   display: flex;
   justify-content: space-between;
@@ -20,21 +17,21 @@ const MainDiv = styled.div`
   margin: 0 auto;
   white-space: normal;
 `;
-/** 2024/4/19 컨테이너 컴포넌트 -by 고정윤 */
+
 const Container = styled.div`
   width: 100%;
 `;
-/** 2024/4/19 컨텐츠 묶음 컴포넌트(header, menu, Maincontainer) -by 고정윤 */
+
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   padding: 24px;
 `;
-/** 2024/4/19 좌측 setting Nav + 우측 컨텐츠 묶음 컴포넌트 -by 고정윤 */
+
 const MainContainer = styled.div`
   display: flex;
 `;
-/** 2024/4/19 우측 컨텐츠 묶음 컴포넌트 -by 고정윤 */
+
 const Main = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,7 +39,7 @@ const Main = styled.div`
   width: 100%;
   text-align: left;
 `;
-/** 2024/4/19 타이틀 컴포넌트 -by 고정윤 */
+
 const Title = styled.div`
   display: flex;
   justify-content: space-between;
@@ -50,14 +47,13 @@ const Title = styled.div`
   padding-bottom: 16px;
   border-bottom: 1px solid #d6d9dc;
 `;
-/** 2024/4/19 h1 컴포넌트 -by 고정윤 */
 const H1 = styled.h1`
   font-weight: 500;
   margin: 0px;
   font-size: 2.5em;
   line-height: calc(15 / 13);
 `;
-/** 2024/4/19 h3 컴포넌트 -by 고정윤 */
+
 const H3 = styled.h3`
   font-weight: 400;
   font-size: 2em;
@@ -69,9 +65,9 @@ const H3 = styled.h3`
     color: hsl(210, 8%, 45%);
   }
 `;
-/** 2024/4/19 서브타이틀 컴포넌트 -by 고정윤 */
+
 const SubTitle = styled.div``;
-/** 2024/4/19 세팅 리스트별 묶음 컴포넌트 -by 고정윤 */
+
 const SetList = styled.div`
   padding: 24px;
   margin-bottom: 48px;
@@ -80,7 +76,7 @@ const SetList = styled.div`
   display: flex;
   flex-direction: column;
 `;
-/** 2024/4/19 세팅 리스트 개별 컴포넌트 -by 고정윤 */
+
 const ListCompoDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -98,13 +94,13 @@ const ListCompoDiv = styled.div`
     gap: 16px;
   }
 `;
-/** 2024/4/19 세팅 리스트 타이틀 컴포넌트 -by 고정윤 */
+
 const ListCompoTitle = styled.div`
   font-weight: bold;
   font-size: 1.4em;
   padding: 4px;
 `;
-/** 2024/4/19 세팅 리스트 내용 묶음 컴포넌트 -by 고정윤 */
+
 const Label = styled.label`
   width: 100%;
   > div {
@@ -134,6 +130,7 @@ const Label = styled.label`
     border-bottom: 0;
     min-height: 44px;
     overflow: hidden;
+    z-index: 2;
     position: relative;
   }
   .btr-sm {
@@ -210,14 +207,13 @@ const Label = styled.label`
     border-radius: 0 0 3px 3px;
   }
 `;
-/** 2024/4/19 버튼 묶음 컴포넌트 -by 고정윤 */
 const BtnDiv = styled.div`
   margin-bottom: 48px;
   padding: 10px 0 15px 0;
   display: flex;
   gap: 16px;
 `;
-/** 2024/4/19 제출 버튼 컴포넌트 -by 고정윤 */
+
 const SubmitBtn = styled.button`
   padding: 10.4px;
   border: 1px solid transparent;
@@ -233,7 +229,7 @@ const SubmitBtn = styled.button`
     background-color: #0074cc;
   }
 `;
-/** 2024/4/19 취소 버튼 컴포넌트 -by 고정윤 */
+
 const CancelBtn = styled(SubmitBtn)`
   background-color: transparent;
   color: #0a95ff;
@@ -243,57 +239,8 @@ const CancelBtn = styled(SubmitBtn)`
 `;
 
 const EditProfile = () => {
-  const dispatch = useDispatch();
-  const userDataState = useSelector((state) => state.userData);
-  const [displayName, setDisplayName] = useState(userDataState.displayName);
-  // const [password, setPassword] = useState(null);
-  const [location, setLocation] = useState(null);
-  const [title, setTitle] = useState(null);
-  const state = useSelector((state) => state.log);
-  if (
-    !(
-      state.value === 1 ||
-      state.value === "1" ||
-      state.value === 0 ||
-      state.value === "0"
-    )
-  ) {
-    window.location.reload();
-  }
-  const submitHandler = () => {
-    const accessToken = localStorage.getItem("Authorization");
-    const editData = {};
-    // If no displayName or password data is entered, do not include it in the editData object
-    if (displayName) {
-      editData.displayName = displayName;
-    } else if (location) {
-      editData.location = location;
-    } else if (title) {
-      editData.title = title;
-    }
-    // else if (password) {
-    //       editData.password = password;
-    //     }
+  const [displayName, setDisplayName] = useState("사용자이름");
 
-    axios
-      .patch(`http://localhost:4000/user/${userDataState.memberId}`, editData, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: accessToken,
-        },
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          dispatch(saveData(res.data.data));
-          alert("Your member information has been changed");
-          window.location.reload("/mypage/useredit");
-        } else {
-          alert("Failed to change member information");
-        }
-      })
-      .catch(() => alert("An error occurred"));
-  };
   return (
     <React.Fragment>
       <Header />
@@ -336,14 +283,16 @@ const EditProfile = () => {
                     <ListCompoDiv>
                       <Label>
                         <ListCompoTitle>Location</ListCompoTitle>
-                        <input onChange={(e) => setLocation(e.target.value)} />
+                        <input
+                          onChange={(e) => setDisplayName(e.target.value)}
+                        />
                       </Label>
                     </ListCompoDiv>
                     <ListCompoDiv>
                       <Label>
                         <ListCompoTitle>Title</ListCompoTitle>
                         <input
-                          onChange={(e) => setTitle(e.target.value)}
+                          onChange={(e) => setDisplayName(e.target.value)}
                           placeholder="No title has been set"
                         />
                       </Label>
@@ -586,8 +535,12 @@ const EditProfile = () => {
                 </SubTitle>
 
                 <BtnDiv>
-                  <SubmitBtn onClick={submitHandler}>Save Profile</SubmitBtn>
-                  <CancelBtn>Cancel</CancelBtn>
+                  <SubmitBtn onClick={(e) => setDisplayName(e.target.value)}>
+                    Save Profile
+                  </SubmitBtn>
+                  <CancelBtn onClick={(e) => setDisplayName(e.target.value)}>
+                    Cancel
+                  </CancelBtn>
                 </BtnDiv>
               </Main>
             </MainContainer>
