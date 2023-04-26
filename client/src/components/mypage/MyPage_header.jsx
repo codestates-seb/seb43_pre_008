@@ -152,26 +152,14 @@ const DropDownLi = styled.li`
 `;
 
 // 마이페이지 상단 헤더부분 개인 프로필 컴포넌트
-const Mypage_header = () => {
+const Mypage_header = ({ user }) => {
   // 아직 작성 안됨, 사용자 정보 api 받아와 이름, 로그값을 보여줘야함. 멤버된 일수 계산식 추가작성 필요
   const logState = useSelector((state) => state.log);
-  const userDataState = useSelector((state) => state.userData);
-
-  let elapsedDay = "?";
-
-  if (logState.value === 1) {
-    // 임시 방편...
-    if (!userDataState.memberId) {
-      window.location.reload();
-    }
+  const [elapsedDay, setElapsedDay] = useState("?");
+  if (logState === true) {
     let today = new Date();
-    let created = userDataState.createdAt.slice(0, 10);
-    created = new Date(created);
-    elapsedDay = Math.trunc(
-      (today.getTime() - created.getTime()) / (1000 * 60 * 60 * 24),
-    );
+    setElapsedDay(today);
   }
-
   const [profileMenu, setProfileMenu] = useState(false);
   const onClickDropBtn = () => {
     setProfileMenu(!profileMenu);
@@ -194,7 +182,7 @@ const Mypage_header = () => {
           <UserInfo>
             {logState ? (
               <UserName className="user_name">
-                <div className="username">{userDataState.displayName}</div>
+                <div className="username">{user.data.name}</div>
               </UserName>
             ) : (
               <UserName>
@@ -221,7 +209,7 @@ const Mypage_header = () => {
                       icon={faCakeCandles}
                     />
                   </Icon>
-                  <div>Member for{elapsedDay}Days</div>
+                  <div>Member for {setElapsedDay}Days</div>
                 </UserLogList>
               )}
               <UserLogList>
