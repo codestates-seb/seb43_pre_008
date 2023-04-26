@@ -6,7 +6,7 @@ import Header from "../share/Header";
 import SignupForm from "../components/sign/SignupForm";
 import { Link } from "react-router-dom";
 import icon_question from "../img/icon_question.svg";
-import icon_tag from "../img/icon_question.svg";
+import icon_tag from "../img/icon_tag.svg";
 import icon_topdown from "../img/icon_topdown.svg";
 import icon_trophy from "../img/icon_trophy.svg";
 import { Desktop, Tablet, Mobile } from "../components/sign/Responsive";
@@ -72,7 +72,7 @@ const Signup = () => {
             </Signdiv>
             <ContextLogin>
               Already have an account?{" "}
-              <RedirectionLink to="/signin">Sign in</RedirectionLink>
+              <RedirectionLink to="../Signin">Sign in</RedirectionLink>
               <br />
               Are you an employer? Sign up on Talent
             </ContextLogin>
