@@ -522,14 +522,14 @@ export default function Question() {
                         </button>
                       </MidContainerleft>
                       <MidContainerRight>
-                        <div>asked {answer.createAt}</div>
+                        <div>asked {location.state.createAt}</div>
                         <p>
                           <img
                             src="https://www.gravatar.com/avatar/73a947b04ec422b1677d20933ab4fe1e?s=64&amp;d=identicon&amp;r=PG&amp;f=1"
                             alt="Tom Bom's user avatar"
                           ></img>
                           <div>
-                            <a href="/mypage">{answer.username}</a>
+                            <a href="/mypage">{location.state.username}</a>
                           </div>
                         </p>
                       </MidContainerRight>
@@ -538,8 +538,12 @@ export default function Question() {
                       <BottomContainerTop>
                         <p>I have the same question!</p>
                         <div>
-                          <span className="name">{answer.username}</span>
-                          <span className="createAt">{answer.createAt}</span>
+                          <span className="name">
+                            {location.state.username}
+                          </span>
+                          <span className="createAt">
+                            {location.state.createAt}
+                          </span>
                         </div>
                       </BottomContainerTop>
                       <button onClick={AddCommentBtn}>Add a comment</button>
