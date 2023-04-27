@@ -39,20 +39,29 @@
    <tr>
     <th>
       마이 페이지
-    </th> <th>
-      검색결과 없음
+    </th> 
+    <th>
+      답변 페이지
     </th>
   </tr>
   <tr>
     <td>
       <img src="https://user-images.githubusercontent.com/118884127/234738910-16f1f72d-e3d5-4f01-8260-b8a15faf8379.gif" alt="my info page" width = 100%>
-    </td><td>
-      <img src="https://user-images.githubusercontent.com/118884127/234739529-2c30bb6a-da97-4e87-bf3f-6b3729e098ee.png" alt="404 page" width = 100%>
     </td>
-
-
+    <td>
+      <img src="https://user-images.githubusercontent.com/118884127/234739484-5a7fe983-a0e3-4522-ab45-46249e1234e3.gif" alt="404 page" width = 100%>
+    </td>
+  </tr> 
+  <tr>
+    <th>
+      검색결과 없음
+    </th>
   </tr>
-
+  <tr>
+    <td>
+      <img src="https://user-images.githubusercontent.com/118884127/234739529-2c30bb6a-da97-4e87-bf3f-6b3729e098ee.png" alt="my info page" width = 100%>
+    </td
+  </tr>
 </table>
 </html>
 
