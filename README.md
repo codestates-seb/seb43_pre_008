@@ -1,4 +1,4 @@
-# 🐯 코드스테이츠 Pre-Project client
+# 🐯 코드스테이츠 Pre-Project 
 ## Contributors
 
 - FE: 박수범, 고정윤, 이진하A
