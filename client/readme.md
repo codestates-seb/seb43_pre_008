@@ -1,6 +1,62 @@
 # 🐯 코드스테이츠 Pre-Project client
 
-> 나중에 수정
+## 😎 Preview
+
+<html>
+<table>
+  <tr>
+    <th>
+      회원 가입 페이지
+    </th>
+    <th>
+      로그인 페이지
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://user-images.githubusercontent.com/118884127/234739375-e6b6ad03-f92c-4ed9-b459-239474d59381.png"  alt="signup page" width = 100% >
+    </td>
+    <td>
+      <img src="https://user-images.githubusercontent.com/118884127/234739380-670cd6d5-9e06-4bc6-bd35-9dccc76b51ee.png" alt="login page" width = 100%>
+    </td>
+   </tr> 
+  <tr>
+    <th>
+      메인 페이지
+    </th>
+    <th>
+      질문 작성 페이지
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://user-images.githubusercontent.com/118884127/234738779-38f6f8cf-00e4-48c6-ae6a-d352eb23d912.gif"  alt="main page" width = 100%>
+    </td>
+    <td>
+      <img src="https://user-images.githubusercontent.com/118884127/234738521-fbcd776b-1208-44e3-ad96-ab1d0d829637.gif" alt="write page" width = 100%>
+    </td>
+   </tr>
+   <tr>
+    <th>
+      마이 페이지
+    </th> <th>
+      Not Found 페이지
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://user-images.githubusercontent.com/118884127/234738910-16f1f72d-e3d5-4f01-8260-b8a15faf8379.gif" alt="my info page" width = 100%>
+    </td><td>
+      <img src="https://user-images.githubusercontent.com/118884127/234739529-2c30bb6a-da97-4e87-bf3f-6b3729e098ee.png" alt="404 page" width = 100%>
+    </td>
+
+
+  </tr>
+
+</table>
+</html>
+
+<br/>
 
 ## 💻 제작환경
 1. `Window 11` & `Mac`
