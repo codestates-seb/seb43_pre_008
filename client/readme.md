@@ -40,7 +40,7 @@
     <th>
       마이 페이지
     </th> <th>
-      Not Found 페이지
+      검색결과 없음
     </th>
   </tr>
   <tr>
